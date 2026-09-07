@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Optional, and as narrow as the platform allows. No event types are requested
+  beyond the minimum, no package filter is needed because it must work in any
+  app, and the service reads the screen only in the instant it is asked to
+  insert text. See TextInserter.kt and SECURITY.md.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeViewFocused"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:canRetrieveWindowContent="true"
+    android:description="@string/accessibility_description"
+    android:notificationTimeout="100"
+    android:settingsActivity="app.lia.android.MainActivity" />

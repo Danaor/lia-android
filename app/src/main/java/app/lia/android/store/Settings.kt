@@ -32,6 +32,10 @@ class Settings(context: Context) {
         val lexiconFixEnabled: Boolean,
         val lexiconSuggestEnabled: Boolean,
         val manualVocabulary: String,
+        val imeAutoStart: Boolean,
+        val imeAutoReturn: Boolean,
+        val bubbleEnabled: Boolean,
+        val bubbleAutoInsert: Boolean,
     )
 
     fun read(): Snapshot = Snapshot(
@@ -49,6 +53,10 @@ class Settings(context: Context) {
         lexiconFixEnabled = prefs.getBoolean(LEXICON_FIX, false),
         lexiconSuggestEnabled = prefs.getBoolean(LEXICON_SUGGEST, true),
         manualVocabulary = prefs.getString(MANUAL_VOCABULARY, "").orEmpty(),
+        imeAutoStart = prefs.getBoolean(IME_AUTO_START, true),
+        imeAutoReturn = prefs.getBoolean(IME_AUTO_RETURN, true),
+        bubbleEnabled = prefs.getBoolean(BUBBLE_ENABLED, false),
+        bubbleAutoInsert = prefs.getBoolean(BUBBLE_AUTO_INSERT, true),
     )
 
     private fun commit(edit: SharedPreferences.Editor.() -> Unit) {
@@ -67,6 +75,10 @@ class Settings(context: Context) {
     fun setLexiconFixEnabled(value: Boolean) = commit { putBoolean(LEXICON_FIX, value) }
     fun setLexiconSuggestEnabled(value: Boolean) = commit { putBoolean(LEXICON_SUGGEST, value) }
     fun setManualVocabulary(value: String) = commit { putString(MANUAL_VOCABULARY, value) }
+    fun setImeAutoStart(value: Boolean) = commit { putBoolean(IME_AUTO_START, value) }
+    fun setImeAutoReturn(value: Boolean) = commit { putBoolean(IME_AUTO_RETURN, value) }
+    fun setBubbleEnabled(value: Boolean) = commit { putBoolean(BUBBLE_ENABLED, value) }
+    fun setBubbleAutoInsert(value: Boolean) = commit { putBoolean(BUBBLE_AUTO_INSERT, value) }
 
     companion object {
         const val NONE = "NONE"
@@ -81,5 +93,9 @@ class Settings(context: Context) {
         private const val LEXICON_FIX = "lexicon_fix_enabled"
         private const val LEXICON_SUGGEST = "lexicon_suggest_enabled"
         private const val MANUAL_VOCABULARY = "manual_vocabulary"
+        private const val IME_AUTO_START = "ime_auto_start"
+        private const val IME_AUTO_RETURN = "ime_auto_return"
+        private const val BUBBLE_ENABLED = "bubble_enabled"
+        private const val BUBBLE_AUTO_INSERT = "bubble_auto_insert"
     }
 }

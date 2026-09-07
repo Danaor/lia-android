@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.2.0 - unreleased
+
+Dictate into other apps, without opening Lia.
+
+- **Floating button.** A microphone bubble that sits over whatever you are
+  doing. Tap, talk, tap. You stay in WhatsApp and keep your own keyboard; drag
+  it anywhere, hide it from its notification. Runs as a microphone foreground
+  service and comes back when you next open the app.
+- **Optional direct insert.** With Lia switched on under Accessibility the text
+  lands in the field you were typing in. Without it, the text is copied and your
+  keyboard's paste chip inserts it in one tap. The service reads the screen only
+  at the moment it inserts, and stores or sends nothing.
+- **Voice keyboard.** An alternative with no extra permissions: switch to the
+  Lia keyboard, it starts listening at once, inserts what you said and hands
+  control back to your usual keyboard. Both automatic steps are switchable.
+- Dictation from either surface goes through the same pipeline and lands in
+  History, tagged with where it came from.
+
+Gboard's own microphone key cannot be pointed at Lia - it is wired to Google's
+recogniser - which is why these two routes exist.
+
 ## 0.1.0 - unreleased
 
 First build.

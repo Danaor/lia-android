@@ -30,6 +30,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings as AndroidSettings
+import android.view.inputmethod.InputMethodManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
@@ -37,6 +41,8 @@ import app.lia.android.BuildConfig
 import app.lia.android.backend.BackendId
 import app.lia.android.backend.Language
 import app.lia.android.backend.OpenAiBackend
+import app.lia.android.ime.BubbleService
+import app.lia.android.ime.TextInserter
 import app.lia.android.store.LexiconStore
 import app.lia.android.store.Secrets
 import app.lia.android.ui.ErrorText
@@ -244,6 +250,8 @@ fun SettingsScreen(viewModel: LiaViewModel, modifier: Modifier = Modifier) {
             Hint("Off = tap to start, tap to stop (the desktop default since 1.4.4).")
         }
 
+        DictateAnywhereCard(viewModel)
+
         VocabularyCard(viewModel)
         LexiconCard(viewModel)
 
@@ -277,6 +285,102 @@ fun SettingsScreen(viewModel: LiaViewModel, modifier: Modifier = Modifier) {
                 copyToClipboard(context, "https://github.com/Danaor/lia-android")
             }) { Text("Copy project link") }
         }
+    }
+}
+
+@Composable
+private fun DictateAnywhereCard(viewModel: LiaViewModel) {
+    val context = LocalContext.current
+    val settings by viewModel.settings.state.collectAsState()
+    var refresh by remember { mutableStateOf(0) }
+    val canOverlay = remember(refresh) { BubbleService.canDrawOverlays(context) }
+    val inserterOn = remember(refresh) { TextInserter.isEnabled(context) }
+
+    SectionCard(
+        title = "Dictate into other apps",
+        subtitle = "Get text into WhatsApp, mail or anywhere else without opening Lia.",
+    ) {
+        Text("Floating button", style = MaterialTheme.typography.labelLarge)
+        Hint(
+            "A small microphone that floats over whatever you are doing. Tap it, talk, " +
+                "tap it again. You never leave the app you are in and you keep your own " +
+                "keyboard."
+        )
+        SwitchRow(
+            label = "Show the floating button",
+            checked = settings.bubbleEnabled,
+            onChange = { wanted ->
+                if (wanted && !BubbleService.canDrawOverlays(context)) {
+                    context.startActivity(
+                        Intent(
+                            AndroidSettings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                            Uri.parse("package:" + context.packageName),
+                        ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    )
+                    return@SwitchRow
+                }
+                viewModel.settings.setBubbleEnabled(wanted)
+                if (wanted) BubbleService.start(context) else BubbleService.stop(context)
+                refresh++
+            },
+        )
+        if (!canOverlay) {
+            Hint("Android needs \"Display over other apps\" first. The switch opens that screen.")
+        }
+
+        SwitchRow(
+            label = "Put the text straight into the field",
+            checked = settings.bubbleAutoInsert,
+            onChange = viewModel.settings::setBubbleAutoInsert,
+        )
+        Hint(
+            if (inserterOn) {
+                "On. Dictated text lands in the field you were typing in."
+            } else {
+                "Needs Lia switched on under Accessibility. Until then the text goes to " +
+                    "the clipboard and your keyboard offers a one-tap paste."
+            }
+        )
+        OutlinedButton(onClick = {
+            context.startActivity(
+                Intent(AndroidSettings.ACTION_ACCESSIBILITY_SETTINGS)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            )
+            refresh++
+        }) { Text(if (inserterOn) "Accessibility: on" else "Turn on in Accessibility") }
+        Hint(
+            "Lia reads the screen only in the instant it inserts your text, and never " +
+                "stores or sends anything it sees. Leave it off if you would rather paste."
+        )
+
+        Text("Voice keyboard", style = MaterialTheme.typography.labelLarge)
+        Hint(
+            "An alternative with no extra permissions: switch to the Lia keyboard, speak, " +
+                "and it hands control back to your usual keyboard."
+        )
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedButton(onClick = {
+                context.startActivity(
+                    Intent(AndroidSettings.ACTION_INPUT_METHOD_SETTINGS)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                )
+            }) { Text("Enable it") }
+            OutlinedButton(onClick = {
+                val manager =
+                    context.getSystemService(InputMethodManager::class.java)
+                manager?.showInputMethodPicker()
+            }) { Text("Switch to it") }
+        }
+        SwitchRow(
+            label = "Start listening as soon as it opens",
+            checked = settings.imeAutoStart,
+            onChange = viewModel.settings::setImeAutoStart,
+        )
+        SwitchRow(
+            label = "Go back to my keyboard after inserting",
+            checked = settings.imeAutoReturn,
+            onChange = viewModel.settings::setImeAutoReturn,
+        )
     }
 }
 

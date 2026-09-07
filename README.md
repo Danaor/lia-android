@@ -52,6 +52,41 @@ The app can fall back from the home server to one cloud when the PC is
 unreachable, and it always tells you when it did. It never falls back the other
 way: if you chose a cloud, that is where the audio goes.
 
+## Dictating into other apps
+
+The point of a dictation app is not to dictate into itself. Lia gives you two
+ways to get text into WhatsApp, mail, or any other field, and you can use
+either.
+
+### The floating button (no keyboard switching)
+Settings > Dictate into other apps > **Show the floating button**. A small
+microphone floats over whatever you are doing. Tap it, talk, tap it again. You
+stay in WhatsApp and you keep your own keyboard. Drag it anywhere; the
+notification hides it again.
+
+Where the text lands depends on one optional switch:
+
+| | taps | what it needs |
+|---|---|---|
+| straight into the field | tap, talk, tap | Lia switched on under Accessibility |
+| onto the clipboard | tap, talk, tap, then the keyboard's paste chip | nothing extra |
+
+Android only lets an app write into another app's text field if it is the
+keyboard or an accessibility service. Lia's accessibility service does one
+thing: at the moment you finish dictating, it finds the focused field and puts
+your text in it. It reads nothing else, stores nothing, and sends nothing. If
+you would rather not grant that, leave it off and paste - everything else still
+works. See [SECURITY.md](SECURITY.md).
+
+### The voice keyboard (no extra permissions)
+Settings > Dictate into other apps > **Enable it**, then pick "Lia dictation
+keyboard" from the keyboard switcher. It starts listening the moment it opens,
+inserts what you said, and hands control straight back to your usual keyboard.
+Both of those steps can be switched off.
+
+Note that Gboard's own microphone key cannot be pointed at Lia - it is wired to
+Google's recogniser - which is why these two routes exist.
+
 ## Files
 
 Pick any audio or video file, or share one into Lia from another app. Long files

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The Lia keyboard is voice-only: it exists to insert dictated text, not to
+  replace your everyday keyboard, so it declares a single Hebrew subtype and
+  points its settings at the main app.
+-->
+<input-method xmlns:android="http://schemas.android.com/apk/res/android"
+    android:settingsActivity="app.lia.android.MainActivity"
+    android:supportsSwitchingToNextInputMethod="true">
+    <subtype
+        android:label="@string/ime_subtype_hebrew"
+        android:imeSubtypeLocale="he_IL"
+        android:imeSubtypeMode="keyboard" />
+</input-method>
