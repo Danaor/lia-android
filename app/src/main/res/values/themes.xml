@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.Lia" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!--
+      For TileLaunchActivity: on screen for a few milliseconds, and it must not
+      cover or dim what is behind it, or the field it is about to dictate into
+      would visibly lose focus.
+    -->
+    <style name="Theme.Lia.Invisible" parent="android:Theme.Translucent.NoTitleBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
 </resources>

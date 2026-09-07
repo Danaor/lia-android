@@ -69,6 +69,40 @@
         </service>
 
         <!--
+          A dictation started from somewhere with no UI of its own. Foreground
+          with a visible notification, because Android will not give the
+          microphone to a background component.
+        -->
+        <service
+            android:name=".ime.DictationService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+
+        <!-- Invisible; exists only so the tile can start the mic service legally. -->
+        <activity
+            android:name=".ime.TileLaunchActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:theme="@style/Theme.Lia.Invisible" />
+
+        <!-- The Quick Settings tile: one more way in, replacing nothing. -->
+        <service
+            android:name=".ime.DictationTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_stat_lia"
+            android:label="@string/tile_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.ACTIVE_TILE"
+                android:value="false" />
+        </service>
+
+        <!--
           Lia as the system speech recogniser. This is the other half of
           "use the mic key of the keyboard I already have": a keyboard either
           switches to a voice IME (see xml/method.xml) or calls

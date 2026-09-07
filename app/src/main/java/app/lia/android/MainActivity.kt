@@ -50,6 +50,8 @@ class MainActivity : ComponentActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             requestNotifications.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
+        // Foreground: the one moment a microphone service may legally start.
+        (application as? App)?.restoreBubble()
         val shared = sharedAudioUri(intent)
         setContent {
             LiaTheme {

@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.3.0 - 2026-09-07
+
+A Quick Settings tile: one more way to dictate, replacing nothing.
+
+- Pull the shade down, tap **Lia**, speak. The session ends itself when you stop
+  talking, and the text goes into the field you were in (or the clipboard). Your
+  keyboard's own microphone key is untouched and keeps working exactly as it
+  does today.
+- Add the tile once from the pencil at the bottom of the Quick Settings panel.
+- The floating button, the voice keyboard and the system voice input all still
+  work; they are alternatives, not replacements for each other.
+
+Under the hood: a tile tap counts as a background start, and Android 14+ refuses
+the microphone to a service started that way - the first attempt died with
+"Foreground service started from background can not have microphone access". The
+tile now goes through an invisible activity, which puts the app in the
+foreground for the instant it takes to start the service legally, then finishes
+so the field behind it keeps its focus.
+
 ## 0.2.1 - 2026-09-07
 
 Use the microphone key of the keyboard you already have.

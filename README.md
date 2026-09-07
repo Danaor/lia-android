@@ -78,6 +78,12 @@ your text in it. It reads nothing else, stores nothing, and sends nothing. If
 you would rather not grant that, leave it off and paste - everything else still
 works. See [SECURITY.md](SECURITY.md).
 
+### The Quick Settings tile
+Pull the shade down, tap **Lia**, speak. The session ends itself when you stop
+talking and the text goes into the field you were in. Add the tile once from the
+pencil at the bottom of the Quick Settings panel. Nothing else changes: your
+keyboard's own microphone key keeps doing whatever it does today.
+
 ### Your existing keyboard's mic key
 Some keyboards do not transcribe by themselves - they hand the microphone key to
 whatever the system's voice input is set to. Lia registers as one, so choosing

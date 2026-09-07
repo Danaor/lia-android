@@ -232,48 +232,14 @@ class BubbleService : Service() {
     private fun deliver(outcome: Router.Outcome) {
         busy = false
         render()
-        when (outcome) {
-            is Router.Outcome.Success -> {
-                val text = outcome.result.text
-                graph.diagnostics.logTranscript(
-                    outcome.result.backend.short, outcome.result.elapsedMs, text
-                )
-                if (text.isBlank()) {
-                    toast("Nothing was heard.")
-                    return
-                }
-                graph.history.add(
-                    History.Entry(
-                        text = text,
-                        backend = outcome.result.backend.short,
-                        timestamp = System.currentTimeMillis(),
-                        elapsedMs = outcome.result.elapsedMs,
-                        source = "bubble",
-                    )
-                )
-                val wantsInsert = graph.settings.state.value.bubbleAutoInsert
-                if (wantsInsert && TextInserter.insert(text)) {
-                    flash(GREEN)
-                } else {
-                    copy(text)
-                    flash(GREEN)
-                    toast(
-                        if (wantsInsert && !TextInserter.isConnected) {
-                            "Copied. Turn on Lia in Accessibility to insert it directly."
-                        } else {
-                            "Copied - tap paste on your keyboard."
-                        }
-                    )
-                }
+        val delivered = Delivery.deliver(this, graph, outcome, "bubble")
+        when (delivered) {
+            is Delivery.Outcome.Inserted -> flash(GREEN)
+            is Delivery.Outcome.Copied -> {
+                flash(GREEN)
+                toast(delivered.reason)
             }
-            is Router.Outcome.Rejected -> {
-                graph.diagnostics.log("bubble rejected: ${outcome.message}")
-                toast(outcome.message)
-            }
-            is Router.Outcome.Failed -> {
-                graph.diagnostics.log("bubble failed (${outcome.kind}): ${outcome.message}")
-                toast(outcome.message)
-            }
+            else -> toast(Delivery.message(delivered))
         }
     }
 
