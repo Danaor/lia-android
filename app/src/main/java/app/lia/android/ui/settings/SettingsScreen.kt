@@ -353,6 +353,29 @@ private fun DictateAnywhereCard(viewModel: LiaViewModel) {
                 "stores or sends anything it sees. Leave it off if you would rather paste."
         )
 
+        Text("Your existing keyboard's mic key", style = MaterialTheme.typography.labelLarge)
+        Hint(
+            "A keyboard that does not transcribe by itself hands its microphone key to " +
+                "the system voice input. Pick Lia there and the mic key you already use " +
+                "becomes a Lia button. Gboard is the exception: its mic key is wired to " +
+                "Google and cannot be changed."
+        )
+        OutlinedButton(onClick = {
+            val opened = runCatching {
+                context.startActivity(
+                    Intent("android.settings.VOICE_INPUT_SETTINGS")
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                )
+                true
+            }.getOrDefault(false)
+            if (!opened) {
+                context.startActivity(
+                    Intent(AndroidSettings.ACTION_SETTINGS)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                )
+            }
+        }) { Text("Choose the voice input") }
+
         Text("Voice keyboard", style = MaterialTheme.typography.labelLarge)
         Hint(
             "An alternative with no extra permissions: switch to the Lia keyboard, speak, " +

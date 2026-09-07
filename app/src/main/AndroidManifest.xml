@@ -68,6 +68,26 @@
                 android:resource="@xml/method" />
         </service>
 
+        <!--
+          Lia as the system speech recogniser. This is the other half of
+          "use the mic key of the keyboard I already have": a keyboard either
+          switches to a voice IME (see xml/method.xml) or calls
+          SpeechRecognizer, which arrives here.
+        -->
+        <service
+            android:name=".ime.LiaRecognitionService"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_RECOGNITION_SERVICE">
+            <intent-filter>
+                <action android:name="android.speech.RecognitionService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.speech"
+                android:resource="@xml/recognition_service" />
+        </service>
+
         <!-- The floating button: one tap, without leaving your own keyboard. -->
         <service
             android:name=".ime.BubbleService"

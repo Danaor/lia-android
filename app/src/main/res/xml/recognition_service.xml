@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Lets Android list Lia under Settings > Voice input, so anything that calls
+  SpeechRecognizer - a keyboard's microphone key included - can be pointed at it.
+-->
+<recognition-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:settingsActivity="app.lia.android.MainActivity" />

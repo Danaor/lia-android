@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.2.1 - 2026-09-07
+
+Use the microphone key of the keyboard you already have.
+
+- Lia now registers as the **system voice input**, in both forms Android offers:
+  a voice IME subtype and a `RecognitionService`. A keyboard that does not
+  transcribe by itself hands its mic key to whichever of those the user has
+  chosen, so picking Lia there turns that key into a Lia button. Settings has a
+  shortcut to the chooser.
+- Invoked that way, Lia behaves like a voice input regardless of the Settings
+  toggles: it listens the moment it opens, stops after a stretch of quiet, and
+  hands control straight back.
+- Gboard is the exception and always will be: its mic key is wired to Google's
+  recogniser and cannot be pointed elsewhere. The floating button covers that
+  case.
+
 ## 0.2.0 - 2026-09-07
 
 Dictate into other apps, without opening Lia.

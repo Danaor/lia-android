@@ -78,6 +78,16 @@ your text in it. It reads nothing else, stores nothing, and sends nothing. If
 you would rather not grant that, leave it off and paste - everything else still
 works. See [SECURITY.md](SECURITY.md).
 
+### Your existing keyboard's mic key
+Some keyboards do not transcribe by themselves - they hand the microphone key to
+whatever the system's voice input is set to. Lia registers as one, so choosing
+it there turns the mic key you already use into a Lia button, with nothing
+floating over the screen. Settings > Dictate into other apps > **Choose the
+voice input**.
+
+Gboard is the exception: its mic key is wired to Google's recogniser and cannot
+be pointed at another engine. Use the floating button there.
+
 ### The voice keyboard (no extra permissions)
 Settings > Dictate into other apps > **Enable it**, then pick "Lia dictation
 keyboard" from the keyboard switcher. It starts listening the moment it opens,

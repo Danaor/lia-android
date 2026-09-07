@@ -67,9 +67,24 @@ class LiaKeyboardService : InputMethodService() {
     override fun onStartInputView(info: EditorInfo?, restarting: Boolean) {
         super.onStartInputView(info, restarting)
         render()
-        if (!restarting && graph.settings.state.value.imeAutoStart && hasMicPermission()) {
+        val autoStart = invokedAsVoiceInput() || graph.settings.state.value.imeAutoStart
+        if (!restarting && autoStart && hasMicPermission()) {
             startRecording()
         }
+    }
+
+    /**
+     * True when another keyboard handed us the microphone rather than the user
+     * picking Lia from the switcher.
+     *
+     * Keyboards that do not run their own recogniser - SwiftKey among them -
+     * delegate their mic key to whatever IME is registered for voice input. In
+     * that case Lia is a guest for exactly one utterance: it listens at once and
+     * gives the keyboard back afterwards, whatever the Settings toggles say.
+     */
+    private fun invokedAsVoiceInput(): Boolean {
+        val manager = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        return manager?.currentInputMethodSubtype?.mode == "voice"
     }
 
     override fun onFinishInputView(finishingInput: Boolean) {
@@ -158,7 +173,9 @@ class LiaKeyboardService : InputMethodService() {
                 if (insert(text)) {
                     setStatus("Inserted by ${outcome.result.backend.short}")
                     render()
-                    if (graph.settings.state.value.imeAutoReturn) returnToPreviousKeyboard()
+                    val goBack =
+                        invokedAsVoiceInput() || graph.settings.state.value.imeAutoReturn
+                    if (goBack) returnToPreviousKeyboard()
                 } else {
                     // No field to write into: leave it somewhere the user can reach.
                     copyToClipboard(text)

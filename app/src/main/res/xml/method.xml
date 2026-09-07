@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  The Lia keyboard is voice-only: it exists to insert dictated text, not to
-  replace your everyday keyboard, so it declares a single Hebrew subtype and
-  points its settings at the main app.
+  Two subtypes on purpose.
+
+  The KEYBOARD subtype is the one you pick from the keyboard switcher.
+
+  The VOICE subtype is what makes Lia eligible as the system's voice input.
+  Keyboards that do not run their own recogniser - SwiftKey among them - hand
+  the microphone key over to a voice IME instead of transcribing themselves, so
+  registering here is what lets an existing keyboard's mic key reach Lia. It is
+  marked auxiliary because that is the contract for a subtype you are switched
+  INTO for one utterance and switched back out of; the app does that switch back
+  itself (Settings > "Go back to my keyboard after inserting").
 -->
 <input-method xmlns:android="http://schemas.android.com/apk/res/android"
     android:settingsActivity="app.lia.android.MainActivity"
     android:supportsSwitchingToNextInputMethod="true">
+
     <subtype
         android:label="@string/ime_subtype_hebrew"
         android:imeSubtypeLocale="he_IL"
         android:imeSubtypeMode="keyboard" />
+
+    <subtype
+        android:label="@string/ime_subtype_voice"
+        android:imeSubtypeLocale="he_IL"
+        android:imeSubtypeMode="voice"
+        android:isAuxiliary="true"
+        android:overridesImplicitlyEnabledSubtype="false" />
 </input-method>

@@ -4,5 +4,6 @@
     <string name="transcribing_channel">Transcribing</string>
     <string name="ime_label">Lia dictation keyboard</string>
     <string name="ime_subtype_hebrew">Hebrew (Lia)</string>
+    <string name="ime_subtype_voice">Lia voice typing</string>
     <string name="accessibility_description">Lets the Lia floating button place dictated text directly into the field you are typing in. Lia reads the screen only at the moment it inserts text, and never stores or sends anything it sees.</string>
 </resources>
