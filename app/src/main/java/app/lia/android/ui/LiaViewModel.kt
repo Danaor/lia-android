@@ -111,6 +111,12 @@ class LiaViewModel(application: Application) : AndroidViewModel(application) {
         _record.value = _record.value.copy(recording = false, busy = true, amplitude = 0f)
 
         graph.scope.launch {
+            graph.diagnostics.logTranscripts = settings.state.value.logTranscripts
+            graph.diagnostics.log(
+                "dictation: %.1fs, backend %s".format(
+                    audio.size / 16000f, settings.state.value.primary.name
+                )
+            )
             val outcome = graph.router().transcribe(audio, Router.Mode.DICTATION)
             withContext(Dispatchers.Main) { applyDictation(outcome) }
         }
@@ -134,6 +140,9 @@ class LiaViewModel(application: Application) : AndroidViewModel(application) {
                     fellBackFrom = result.fellBackFrom,
                     lexiconFixes = outcome.post.lexiconFixes.map { "${it.from} -> ${it.to}" },
                 )
+                graph.diagnostics.logTranscript(
+                    result.backend.short, result.elapsedMs, result.text
+                )
                 if (result.text.isNotBlank()) {
                     _history.value = graph.history.add(
                         History.Entry(
@@ -145,10 +154,14 @@ class LiaViewModel(application: Application) : AndroidViewModel(application) {
                     )
                 }
             }
-            is Router.Outcome.Rejected ->
+            is Router.Outcome.Rejected -> {
+                graph.diagnostics.log("dictation rejected: ${outcome.message}")
                 _record.value = RecordState(message = outcome.message)
-            is Router.Outcome.Failed ->
+            }
+            is Router.Outcome.Failed -> {
+                graph.diagnostics.log("dictation failed (${outcome.kind}): ${outcome.message}")
                 _record.value = RecordState(error = outcome.message)
+            }
         }
     }
 
@@ -254,6 +267,18 @@ class LiaViewModel(application: Application) : AndroidViewModel(application) {
             )
         return backend.test()
     }
+
+    /** The "report a problem" text: configuration and the log, never a secret. */
+    fun problemReport(): String = graph.diagnostics.report(
+        appVersion = app.lia.android.BuildConfig.VERSION_NAME,
+        device = android.os.Build.MANUFACTURER + " " + android.os.Build.MODEL,
+        androidVersion = android.os.Build.VERSION.RELEASE,
+        settings = settings.state.value,
+        secrets = secrets,
+        historyEntries = _history.value.size,
+        vocabularyTerms = graph.vocabulary.terms.size,
+        lexiconInstalled = graph.lexiconStore.isInstalled,
+    )
 
     fun saveSecret(key: Secrets.Key, value: String) = secrets.save(key, value)
 

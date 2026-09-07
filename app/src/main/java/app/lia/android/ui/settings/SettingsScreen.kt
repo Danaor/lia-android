@@ -45,6 +45,7 @@ import app.lia.android.ui.LabelRow
 import app.lia.android.ui.LiaViewModel
 import app.lia.android.ui.SectionCard
 import app.lia.android.ui.copyToClipboard
+import app.lia.android.ui.shareText
 import app.lia.android.vocab.VocabStore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -251,7 +252,10 @@ fun SettingsScreen(viewModel: LiaViewModel, modifier: Modifier = Modifier) {
             SwitchRow(
                 label = "Write transcripts to the diagnostic log",
                 checked = settings.logTranscripts,
-                onChange = viewModel.settings::setLogTranscripts,
+                onChange = {
+                    viewModel.settings.setLogTranscripts(it)
+                    viewModel.appGraph.diagnostics.logTranscripts = it
+                },
             )
             Hint("Off by default. History still keeps your transcripts on this phone.")
             OutlinedButton(onClick = {
@@ -259,6 +263,8 @@ fun SettingsScreen(viewModel: LiaViewModel, modifier: Modifier = Modifier) {
                 viewModel.secrets.clearAll()
             }) { Text("Delete all keys and history") }
         }
+
+        DiagnosticsCard(viewModel)
 
         SectionCard(title = "About") {
             LabelRow("Version", BuildConfig.VERSION_NAME)
@@ -270,6 +276,37 @@ fun SettingsScreen(viewModel: LiaViewModel, modifier: Modifier = Modifier) {
             TextButton(onClick = {
                 copyToClipboard(context, "https://github.com/Danaor/lia-android")
             }) { Text("Copy project link") }
+        }
+    }
+}
+
+@Composable
+private fun DiagnosticsCard(viewModel: LiaViewModel) {
+    val context = LocalContext.current
+    var log by remember { mutableStateOf<String?>(null) }
+
+    SectionCard(
+        title = "Diagnostics",
+        subtitle = "What to send when something goes wrong. No keys, no tokens.",
+    ) {
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedButton(onClick = {
+                log = viewModel.appGraph.diagnostics.read(4000)
+            }) { Text("Show log") }
+            OutlinedButton(onClick = {
+                shareText(context, viewModel.problemReport())
+            }) { Text("Report a problem") }
+            TextButton(onClick = {
+                viewModel.appGraph.diagnostics.clear()
+                log = null
+            }) { Text("Clear log") }
+        }
+        log?.let {
+            Text(
+                it.takeLast(2000),
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.fillMaxWidth(),
+            )
         }
     }
 }

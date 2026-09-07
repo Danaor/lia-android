@@ -4,6 +4,7 @@ import android.content.Context
 import app.lia.android.backend.Backend
 import app.lia.android.backend.BackendId
 import app.lia.android.backend.Router
+import app.lia.android.store.Diagnostics
 import app.lia.android.store.History
 import app.lia.android.store.LexiconStore
 import app.lia.android.store.Secrets
@@ -32,6 +33,9 @@ class AppGraph private constructor(context: Context) {
     val settings = Settings(app)
     val secrets = Secrets(app)
     val history = History(File(app.filesDir, "history.json"))
+    val diagnostics = Diagnostics(File(app.filesDir, "lia.log")).apply {
+        logTranscripts = settings.state.value.logTranscripts
+    }
     val lexiconStore = LexiconStore(File(app.filesDir, "lexicon"))
 
     val vocabularyFile: File get() = File(app.filesDir, "vocabulary.json")
