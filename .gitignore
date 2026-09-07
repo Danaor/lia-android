@@ -10,6 +10,9 @@ captures/
 .externalNativeBuild/
 .cxx/
 
+# Local session context, never published
+CLAUDE.local.md
+
 # IDE
 .idea/
 *.iml
