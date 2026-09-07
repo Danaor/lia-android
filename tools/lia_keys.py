@@ -8,9 +8,9 @@ Nothing here ever writes a secret to disk or prints one. Values come from
 2. the local Lia Desktop config (%APPDATA%\\Lia\\config.json), decrypted with
    the desktop's own secret_store (DPAPI).
 
-The desktop source directory is found via LIA_DESKTOP_DIR, else a guess at
-the usual dev checkout path under the home directory. If neither works you can still run every probe by exporting
-the environment variables above.
+The desktop source directory is found via LIA_DESKTOP_DIR, else a guess at the
+usual dev checkout path under the home directory. If neither works you can still
+run every probe by exporting the environment variables above.
 """
 
 from __future__ import annotations
