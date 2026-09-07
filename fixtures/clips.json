@@ -1,0 +1,30 @@
+[
+  {
+    "name": "he_short",
+    "language": "he",
+    "seconds": 2.77,
+    "source": "gemini-tts",
+    "text": "שלום, בדיקה של המערכת."
+  },
+  {
+    "name": "he_medium",
+    "language": "he",
+    "seconds": 5.01,
+    "source": "gemini-tts",
+    "text": "אני מקליט עכשיו הודעה קצרה כדי לבדוק את איכות התמלול של המערכת החדשה."
+  },
+  {
+    "name": "he_long",
+    "language": "he",
+    "seconds": 11.37,
+    "source": "gemini-tts",
+    "text": "בדיקת תמלול ארוכה יותר. אני מדבר כמה משפטים ברצף, בלי הפסקות גדולות, כדי לראות איך המערכת מתמודדת עם קטע רציף. האם הפיסוק נשמר? נראה שכן."
+  },
+  {
+    "name": "he_en_mixed",
+    "language": "he",
+    "seconds": 39.89,
+    "source": "gemini-tts",
+    "text": "אני רוצה לבדוק את הפיצול לקטעים. The recording should be split into several pieces before it is sent. כל קטע נשלח בחיבור נפרד לשרת, ואז מחברים את הטקסט בחזרה. This sentence is in English so we can see how the router handles mixed speech. אחר כך אנחנו בודקים שהמילים בגבול בין הקטעים לא נחתכות. The splitter cuts at the quietest frame inside the window. אם אין שקט מספיק, הוא חותך בכוח ומתחיל את הקטע הבא שנייה אחורה. That overlap means a boundary word appears whole in the next piece. לסיום, אנחנו בודקים שהתמלול המלא קריא והגיוני. תודה."
+  }
+]

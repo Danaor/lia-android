@@ -1,0 +1,399 @@
+{
+  "backend": "gemini",
+  "model": "gemini-3.5-transcribe",
+  "key_check": [
+    true,
+    "HTTP 200"
+  ],
+  "results": [
+    {
+      "clip": "he_short",
+      "elapsed_s": 3.05,
+      "vocab_sent": false,
+      "request": {
+        "url": "https://generativelanguage.googleapis.com/v1beta/interactions",
+        "headers": {
+          "x-goog-api-key": "<KEY>",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "model": "gemini-3.5-transcribe",
+          "input": [
+            {
+              "type": "audio",
+              "data": "<base64 wav>",
+              "mime_type": "audio/wav"
+            }
+          ],
+          "generation_config": {
+            "transcription_config": {
+              "language_codes": [
+                "he-IL"
+              ],
+              "mode": {
+                "type": "verbatim"
+              }
+            }
+          }
+        }
+      },
+      "response": {
+        "id": "v1_ChdSRi1lYW8ydUk4M2J4czBQc29MSWlBURIXUkYtZWFvMnVJODNieHMwUHNvTElpQVE",
+        "status": "completed",
+        "usage": {
+          "total_tokens": 71,
+          "total_input_tokens": 71,
+          "input_tokens_by_modality": [
+            {
+              "modality": "text",
+              "tokens": 1
+            },
+            {
+              "modality": "audio",
+              "tokens": 70
+            }
+          ],
+          "total_cached_tokens": 0,
+          "total_output_tokens": 0,
+          "total_tool_use_tokens": 0,
+          "total_thought_tokens": 0,
+          "raw_prompt_token": 481,
+          "model_invocation_token_counts": [
+            {
+              "prompt_tokens_details": [
+                {
+                  "modality": "text",
+                  "tokens": 411
+                },
+                {
+                  "modality": "audio",
+                  "tokens": 70
+                }
+              ],
+              "candidates_tokens_details": [
+                {
+                  "modality": "text",
+                  "tokens": 10
+                }
+              ]
+            }
+          ]
+        },
+        "created": "2026-09-07T06:52:52Z",
+        "updated": "2026-09-07T06:52:52Z",
+        "service_tier": "standard",
+        "steps": [
+          {
+            "content": [
+              {
+                "text": "שלום, בדיקה של המערכת.",
+                "type": "text"
+              }
+            ],
+            "type": "model_output"
+          }
+        ],
+        "object": "interaction",
+        "model": "gemini-3.5-transcribe"
+      },
+      "text": "שלום, בדיקה של המערכת."
+    },
+    {
+      "clip": "he_medium",
+      "elapsed_s": 3.22,
+      "vocab_sent": true,
+      "request": {
+        "url": "https://generativelanguage.googleapis.com/v1beta/interactions",
+        "headers": {
+          "x-goog-api-key": "<KEY>",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "model": "gemini-3.5-transcribe",
+          "input": [
+            {
+              "type": "audio",
+              "data": "<base64 wav>",
+              "mime_type": "audio/wav"
+            }
+          ],
+          "generation_config": {
+            "transcription_config": {
+              "language_codes": [
+                "he-IL"
+              ],
+              "mode": {
+                "type": "verbatim"
+              },
+              "custom_vocabulary": [
+                "Kubernetes",
+                "React",
+                "git push",
+                "ביטולים",
+                "פגישה"
+              ]
+            }
+          }
+        }
+      },
+      "response": {
+        "id": "v1_ChdSMS1lYXE3UUw5YXR4TjhQay11YTZRRRIXUjEtZWFxN1FMOWF0eE44UGstdWE2UUU",
+        "status": "completed",
+        "usage": {
+          "total_tokens": 127,
+          "total_input_tokens": 127,
+          "input_tokens_by_modality": [
+            {
+              "modality": "text",
+              "tokens": 1
+            },
+            {
+              "modality": "audio",
+              "tokens": 126
+            }
+          ],
+          "total_cached_tokens": 0,
+          "total_output_tokens": 0,
+          "total_tool_use_tokens": 0,
+          "total_thought_tokens": 0,
+          "raw_prompt_token": 592,
+          "model_invocation_token_counts": [
+            {
+              "prompt_tokens_details": [
+                {
+                  "modality": "text",
+                  "tokens": 466
+                },
+                {
+                  "modality": "audio",
+                  "tokens": 126
+                }
+              ],
+              "candidates_tokens_details": [
+                {
+                  "modality": "text",
+                  "tokens": 30
+                }
+              ]
+            }
+          ]
+        },
+        "created": "2026-09-07T06:52:55Z",
+        "updated": "2026-09-07T06:52:55Z",
+        "service_tier": "standard",
+        "steps": [
+          {
+            "content": [
+              {
+                "text": "אני מקליٹ עכשיו הודעה קצרה כדי לבדוק את איכות התמלול של המערכת החדשה.",
+                "type": "text"
+              }
+            ],
+            "type": "model_output"
+          }
+        ],
+        "object": "interaction",
+        "model": "gemini-3.5-transcribe"
+      },
+      "text": "אני מקליٹ עכשיו הודעה קצרה כדי לבדוק את איכות התמלול של המערכת החדשה."
+    },
+    {
+      "clip": "he_long",
+      "elapsed_s": 3.62,
+      "vocab_sent": true,
+      "request": {
+        "url": "https://generativelanguage.googleapis.com/v1beta/interactions",
+        "headers": {
+          "x-goog-api-key": "<KEY>",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "model": "gemini-3.5-transcribe",
+          "input": [
+            {
+              "type": "audio",
+              "data": "<base64 wav>",
+              "mime_type": "audio/wav"
+            }
+          ],
+          "generation_config": {
+            "transcription_config": {
+              "language_codes": [
+                "he-IL"
+              ],
+              "mode": {
+                "type": "verbatim"
+              },
+              "custom_vocabulary": [
+                "Kubernetes",
+                "React",
+                "git push",
+                "ביטולים",
+                "פגישה"
+              ]
+            }
+          }
+        }
+      },
+      "response": {
+        "id": "v1_ChdTMS1lYXNheElJbnh2ZElQZ3JYSHVRRRIXUzEtZWFzYXhJSW54dmRJUGdyWEh1UUU",
+        "status": "completed",
+        "usage": {
+          "total_tokens": 286,
+          "total_input_tokens": 286,
+          "input_tokens_by_modality": [
+            {
+              "modality": "audio",
+              "tokens": 285
+            },
+            {
+              "modality": "text",
+              "tokens": 1
+            }
+          ],
+          "total_cached_tokens": 0,
+          "total_output_tokens": 0,
+          "total_tool_use_tokens": 0,
+          "total_thought_tokens": 0,
+          "raw_prompt_token": 751,
+          "model_invocation_token_counts": [
+            {
+              "prompt_tokens_details": [
+                {
+                  "modality": "text",
+                  "tokens": 466
+                },
+                {
+                  "modality": "audio",
+                  "tokens": 285
+                }
+              ],
+              "candidates_tokens_details": [
+                {
+                  "modality": "text",
+                  "tokens": 61
+                }
+              ]
+            }
+          ]
+        },
+        "created": "2026-09-07T06:52:59Z",
+        "updated": "2026-09-07T06:52:59Z",
+        "service_tier": "standard",
+        "steps": [
+          {
+            "content": [
+              {
+                "text": "בדיקת תמלול ארוכה יותר. אני מדבר כמה משפטים ברצף בלי הפסקות גדולות, כדי לראות איך המערכת מתמודדת עם קצב רציף. האם הפיסוק נשמר? נראה שכן.",
+                "type": "text"
+              }
+            ],
+            "type": "model_output"
+          }
+        ],
+        "object": "interaction",
+        "model": "gemini-3.5-transcribe"
+      },
+      "text": "בדיקת תמלול ארוכה יותר. אני מדבר כמה משפטים ברצף בלי הפסקות גדולות, כדי לראות איך המערכת מתמודדת עם קצב רציף. האם הפיסוק נשמר? נראה שכן."
+    },
+    {
+      "clip": "he_en_mixed",
+      "elapsed_s": 3.61,
+      "vocab_sent": true,
+      "request": {
+        "url": "https://generativelanguage.googleapis.com/v1beta/interactions",
+        "headers": {
+          "x-goog-api-key": "<KEY>",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "model": "gemini-3.5-transcribe",
+          "input": [
+            {
+              "type": "audio",
+              "data": "<base64 wav>",
+              "mime_type": "audio/wav"
+            }
+          ],
+          "generation_config": {
+            "transcription_config": {
+              "language_codes": [
+                "he-IL"
+              ],
+              "mode": {
+                "type": "verbatim"
+              },
+              "custom_vocabulary": [
+                "Kubernetes",
+                "React",
+                "git push",
+                "ביטולים",
+                "פגישה"
+              ]
+            }
+          }
+        }
+      },
+      "response": {
+        "id": "v1_ChdUMS1lYXVtZkNhN3R4czBQbTZ1bDJRNBIXVDEtZWF1bWZDYTd0eHMwUG02dWwyUTQ",
+        "status": "completed",
+        "usage": {
+          "total_tokens": 999,
+          "total_input_tokens": 999,
+          "input_tokens_by_modality": [
+            {
+              "modality": "audio",
+              "tokens": 998
+            },
+            {
+              "modality": "text",
+              "tokens": 1
+            }
+          ],
+          "total_cached_tokens": 0,
+          "total_output_tokens": 0,
+          "total_tool_use_tokens": 0,
+          "total_thought_tokens": 0,
+          "raw_prompt_token": 1464,
+          "model_invocation_token_counts": [
+            {
+              "prompt_tokens_details": [
+                {
+                  "modality": "text",
+                  "tokens": 466
+                },
+                {
+                  "modality": "audio",
+                  "tokens": 998
+                }
+              ],
+              "candidates_tokens_details": [
+                {
+                  "modality": "text",
+                  "tokens": 165
+                }
+              ]
+            }
+          ]
+        },
+        "created": "2026-09-07T06:53:03Z",
+        "updated": "2026-09-07T06:53:03Z",
+        "service_tier": "standard",
+        "steps": [
+          {
+            "content": [
+              {
+                "text": "אני רוצה לבדוק את הפיצול לקטעים. The recording should be split into several pieces before it is sent. כל קטע נשלח בחיבור נפרד לשרת ואז מחברים את הטקסט בחזרה. The sentence is in English so we can see how the router handles mixed speech. אחר כך אנחנו בודקים שהמילים בגבול בין הקטעים לא נחתכות. The splitter cuts at the quietest frame inside the window. אם אין שקט מספיק הוא חותך בכוח ומתחיל את הקטע הבא שנייה אחורה. That overlap means a boundary word appears whole in the next piece. לסיום אנחנו בודקים שהתמלול המלא קריא והגיוני. תודה.",
+                "type": "text"
+              }
+            ],
+            "type": "model_output"
+          }
+        ],
+        "object": "interaction",
+        "model": "gemini-3.5-transcribe"
+      },
+      "text": "אני רוצה לבדוק את הפיצול לקטעים. The recording should be split into several pieces before it is sent. כל קטע נשלח בחיבור נפרד לשרת ואז מחברים את הטקסט בחזרה. The sentence is in English so we can see how the router handles mixed speech. אחר כך אנחנו בודקים שהמילים בגבול בין הקטעים לא נחתכות. The splitter cuts at the quietest frame inside the window. אם אין שקט מספיק הוא חותך בכוח ומתחיל את הקטע הבא שנייה אחורה. That overlap means a boundary word appears whole in the next piece. לסיום אנחנו בודקים שהתמלול המלא קריא והגיוני. תודה."
+    }
+  ]
+}

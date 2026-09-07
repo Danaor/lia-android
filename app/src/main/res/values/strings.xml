@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lia</string>
+    <string name="recording_channel">Recording</string>
+    <string name="transcribing_channel">Transcribing</string>
+</resources>

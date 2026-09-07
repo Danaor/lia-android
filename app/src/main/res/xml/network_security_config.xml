@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Android blocks cleartext from API 28 on. Lia needs plain ws:// for ONE case:
+  a home transcription server reached over Tailscale (100.64.0.0/10) or a LAN.
+  Those are IP literals, and <domain-config> cannot express an IP RANGE, so the
+  base config permits cleartext and the real restriction is enforced in code -
+  see backend/WsUrl.kt (isPrivateHost) which refuses plain ws:// to any public
+  host unless the user explicitly turns on "allow insecure". SECURITY.md
+  documents this.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

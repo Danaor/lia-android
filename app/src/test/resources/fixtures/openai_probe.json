@@ -1,0 +1,862 @@
+{
+  "backend": "openai",
+  "models": [
+    "gpt-transcribe",
+    "whisper-1"
+  ],
+  "key_check": [
+    true,
+    "HTTP 200"
+  ],
+  "results": [
+    {
+      "model": "gpt-transcribe",
+      "clip": "he_short",
+      "elapsed_s": 1.99,
+      "response_format": "json",
+      "prompt_len": 639,
+      "request": {
+        "url": "https://api.openai.com/v1/audio/transcriptions",
+        "headers": {
+          "Authorization": "Bearer <KEY>"
+        },
+        "multipart_fields": {
+          "model": "gpt-transcribe",
+          "response_format": "json",
+          "language": "he",
+          "prompt": "Transcribe the audio verbatim in the language actually spoken. Do NOT translate. Do NOT summarise. If Hebrew is spoken, output Hebrew. If English is spoken, output English. If both languages are mixed in one utterance, preserve each phrase in its original language. Output every word the speaker said, including filler words and repetitions. CRITICAL: If the audio contains no actual speech - only silence, background noise, breathing, mouse clicks, keyboard sounds, fans, or static - output an empty string. Do NOT invent words to fill the void. An empty transcription is the correct output for an audio clip that does not contain speech."
+        },
+        "file": {
+          "name": "audio.wav",
+          "mime": "audio/wav",
+          "bytes": 88714,
+          "format": "16 kHz mono PCM16 WAV"
+        }
+      },
+      "response": {
+        "text": "שלום, בדיקה של המערכת.",
+        "languages": [
+          {
+            "code": "he"
+          }
+        ],
+        "usage": {
+          "type": "duration",
+          "seconds": 3
+        }
+      },
+      "text": "שלום, בדיקה של המערכת."
+    },
+    {
+      "model": "gpt-transcribe",
+      "clip": "he_medium",
+      "elapsed_s": 2.11,
+      "response_format": "json",
+      "prompt_len": 698,
+      "request": {
+        "url": "https://api.openai.com/v1/audio/transcriptions",
+        "headers": {
+          "Authorization": "Bearer <KEY>"
+        },
+        "multipart_fields": {
+          "model": "gpt-transcribe",
+          "response_format": "json",
+          "language": "he",
+          "prompt": "Transcribe the audio verbatim in the language actually spoken. Do NOT translate. Do NOT summarise. If Hebrew is spoken, output Hebrew. If English is spoken, output English. If both languages are mixed in one utterance, preserve each phrase in its original language. Output every word the speaker said, including filler words and repetitions. CRITICAL: If the audio contains no actual speech - only silence, background noise, breathing, mouse clicks, keyboard sounds, fans, or static - output an empty string. Do NOT invent words to fill the void. An empty transcription is the correct output for an audio clip that does not contain speech. Common terms: Kubernetes, React, git push, ביטולים, פגישה."
+        },
+        "file": {
+          "name": "audio.wav",
+          "mime": "audio/wav",
+          "bytes": 160394,
+          "format": "16 kHz mono PCM16 WAV"
+        }
+      },
+      "response": {
+        "text": "אני מקליט עכשיו הודעה קצרה כדי לבדוק את איכות התמלול של המערכת החדשה.",
+        "languages": [
+          {
+            "code": "he"
+          }
+        ],
+        "usage": {
+          "type": "duration",
+          "seconds": 6
+        }
+      },
+      "text": "אני מקליט עכשיו הודעה קצרה כדי לבדוק את איכות התמלול של המערכת החדשה."
+    },
+    {
+      "model": "gpt-transcribe",
+      "clip": "he_long",
+      "elapsed_s": 1.64,
+      "response_format": "json",
+      "prompt_len": 698,
+      "request": {
+        "url": "https://api.openai.com/v1/audio/transcriptions",
+        "headers": {
+          "Authorization": "Bearer <KEY>"
+        },
+        "multipart_fields": {
+          "model": "gpt-transcribe",
+          "response_format": "json",
+          "language": "he",
+          "prompt": "Transcribe the audio verbatim in the language actually spoken. Do NOT translate. Do NOT summarise. If Hebrew is spoken, output Hebrew. If English is spoken, output English. If both languages are mixed in one utterance, preserve each phrase in its original language. Output every word the speaker said, including filler words and repetitions. CRITICAL: If the audio contains no actual speech - only silence, background noise, breathing, mouse clicks, keyboard sounds, fans, or static - output an empty string. Do NOT invent words to fill the void. An empty transcription is the correct output for an audio clip that does not contain speech. Common terms: Kubernetes, React, git push, ביטולים, פגישה."
+        },
+        "file": {
+          "name": "audio.wav",
+          "mime": "audio/wav",
+          "bytes": 363914,
+          "format": "16 kHz mono PCM16 WAV"
+        }
+      },
+      "response": {
+        "text": "בדיקה תמלול ארוכה יותר. אני מדבר כמה משפטים ברצף בלי הפסקות גדולות, כדי לראות איך המערכת מתמודדת עם קטע רציף. האם הפיסוק נשמר? נראה שכן.",
+        "languages": [
+          {
+            "code": "he"
+          }
+        ],
+        "usage": {
+          "type": "duration",
+          "seconds": 12
+        }
+      },
+      "text": "בדיקה תמלול ארוכה יותר. אני מדבר כמה משפטים ברצף בלי הפסקות גדולות, כדי לראות איך המערכת מתמודדת עם קטע רציף. האם הפיסוק נשמר? נראה שכן."
+    },
+    {
+      "model": "gpt-transcribe",
+      "clip": "he_en_mixed",
+      "elapsed_s": 2.88,
+      "response_format": "json",
+      "prompt_len": 698,
+      "request": {
+        "url": "https://api.openai.com/v1/audio/transcriptions",
+        "headers": {
+          "Authorization": "Bearer <KEY>"
+        },
+        "multipart_fields": {
+          "model": "gpt-transcribe",
+          "response_format": "json",
+          "language": "he",
+          "prompt": "Transcribe the audio verbatim in the language actually spoken. Do NOT translate. Do NOT summarise. If Hebrew is spoken, output Hebrew. If English is spoken, output English. If both languages are mixed in one utterance, preserve each phrase in its original language. Output every word the speaker said, including filler words and repetitions. CRITICAL: If the audio contains no actual speech - only silence, background noise, breathing, mouse clicks, keyboard sounds, fans, or static - output an empty string. Do NOT invent words to fill the void. An empty transcription is the correct output for an audio clip that does not contain speech. Common terms: Kubernetes, React, git push, ביטולים, פגישה."
+        },
+        "file": {
+          "name": "audio.wav",
+          "mime": "audio/wav",
+          "bytes": 1276554,
+          "format": "16 kHz mono PCM16 WAV"
+        }
+      },
+      "response": {
+        "text": "אני רוצה לבדוק את הפיצול הקטעים. The recording should be split into several pieces before a descent. כל קטע נשלח בחיבור נפרד לשרת, ואז מחברים את הטקסט בחזרה. The sentence is in English so we can see how the router handles mixed speech. אחר כך אנחנו בודקים שהמילים בגבול בין הקטעים לא נחתכות. The splitter cuts at the quietest frame inside the window. אם אין שקט מספיק, הוא חותך בכוח ומתחיל את הקטע הבא שנייה אחורה. That overlap means a boundary word appears whole in the next piece. לסיום, אנחנו בודקים שהתמלול המלא קריא והגיוני. תודה.",
+        "languages": [
+          {
+            "code": "he"
+          }
+        ],
+        "usage": {
+          "type": "duration",
+          "seconds": 40
+        }
+      },
+      "text": "אני רוצה לבדוק את הפיצול הקטעים. The recording should be split into several pieces before a descent. כל קטע נשלח בחיבור נפרד לשרת, ואז מחברים את הטקסט בחזרה. The sentence is in English so we can see how the router handles mixed speech. אחר כך אנחנו בודקים שהמילים בגבול בין הקטעים לא נחתכות. The splitter cuts at the quietest frame inside the window. אם אין שקט מספיק, הוא חותך בכוח ומתחיל את הקטע הבא שנייה אחורה. That overlap means a boundary word appears whole in the next piece. לסיום, אנחנו בודקים שהתמלול המלא קריא והגיוני. תודה."
+    },
+    {
+      "model": "whisper-1",
+      "clip": "he_short",
+      "elapsed_s": 2.34,
+      "response_format": "verbose_json",
+      "prompt_len": 0,
+      "request": {
+        "url": "https://api.openai.com/v1/audio/transcriptions",
+        "headers": {
+          "Authorization": "Bearer <KEY>"
+        },
+        "multipart_fields": {
+          "model": "whisper-1",
+          "response_format": "verbose_json",
+          "language": "he"
+        },
+        "file": {
+          "name": "audio.wav",
+          "mime": "audio/wav",
+          "bytes": 88714,
+          "format": "16 kHz mono PCM16 WAV"
+        }
+      },
+      "response": {
+        "task": "transcribe",
+        "language": "hebrew",
+        "duration": 2.7699999809265137,
+        "text": "שלום, בדיקה של המערכת",
+        "segments": [
+          {
+            "id": 0,
+            "seek": 0,
+            "start": 0.0,
+            "end": 3.0,
+            "text": " שלום, בדיקה של המערכת",
+            "tokens": [
+              50364,
+              8817,
+              17333,
+              11,
+              49959,
+              20530,
+              2225,
+              8817,
+              17270,
+              95,
+              44121,
+              5548,
+              50514
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.31365343928337097,
+            "compression_ratio": 0.7755101919174194,
+            "no_speech_prob": 0.0036953557282686234
+          }
+        ],
+        "usage": {
+          "type": "duration",
+          "seconds": 3
+        }
+      },
+      "text": "שלום, בדיקה של המערכת"
+    },
+    {
+      "model": "whisper-1",
+      "clip": "he_medium",
+      "elapsed_s": 3.07,
+      "response_format": "verbose_json",
+      "prompt_len": 58,
+      "request": {
+        "url": "https://api.openai.com/v1/audio/transcriptions",
+        "headers": {
+          "Authorization": "Bearer <KEY>"
+        },
+        "multipart_fields": {
+          "model": "whisper-1",
+          "response_format": "verbose_json",
+          "language": "he",
+          "prompt": "Common terms: Kubernetes, React, git push, ביטולים, פגישה."
+        },
+        "file": {
+          "name": "audio.wav",
+          "mime": "audio/wav",
+          "bytes": 160394,
+          "format": "16 kHz mono PCM16 WAV"
+        }
+      },
+      "response": {
+        "task": "transcribe",
+        "language": "hebrew",
+        "duration": 5.010000228881836,
+        "text": "אני מקליט עכשיו הודעה קצרה כדי לבדוק את איכות התמלול של המערכת החדשה.",
+        "segments": [
+          {
+            "id": 0,
+            "seek": 0,
+            "start": 0.0,
+            "end": 5.0,
+            "text": " אני מקליט עכשיו הודעה קצרה כדי לבדוק את איכות התמלול של המערכת החדשה.",
+            "tokens": [
+              50364,
+              16707,
+              39598,
+              3072,
+              27762,
+              7535,
+              44074,
+              2922,
+              40662,
+              2225,
+              14831,
+              11968,
+              36279,
+              7127,
+              36679,
+              5001,
+              4349,
+              241,
+              19047,
+              9625,
+              8428,
+              27958,
+              5071,
+              25579,
+              8430,
+              3072,
+              9404,
+              8817,
+              17270,
+              95,
+              44121,
+              5548,
+              26224,
+              7514,
+              26953,
+              13,
+              50614
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.19743318855762482,
+            "compression_ratio": 1.3888888359069824,
+            "no_speech_prob": 0.0007969326106831431
+          }
+        ],
+        "usage": {
+          "type": "duration",
+          "seconds": 6
+        }
+      },
+      "text": "אני מקליט עכשיו הודעה קצרה כדי לבדוק את איכות התמלול של המערכת החדשה."
+    },
+    {
+      "model": "whisper-1",
+      "clip": "he_long",
+      "elapsed_s": 1.35,
+      "response_format": "verbose_json",
+      "prompt_len": 58,
+      "request": {
+        "url": "https://api.openai.com/v1/audio/transcriptions",
+        "headers": {
+          "Authorization": "Bearer <KEY>"
+        },
+        "multipart_fields": {
+          "model": "whisper-1",
+          "response_format": "verbose_json",
+          "language": "he",
+          "prompt": "Common terms: Kubernetes, React, git push, ביטולים, פגישה."
+        },
+        "file": {
+          "name": "audio.wav",
+          "mime": "audio/wav",
+          "bytes": 363914,
+          "format": "16 kHz mono PCM16 WAV"
+        }
+      },
+      "response": {
+        "task": "transcribe",
+        "language": "hebrew",
+        "duration": 11.369999885559082,
+        "text": "בדיקת תמלול ארוכה יותר. אני מדבר כמה משפטים ברצף, בלי הפסקות גדולות, כדי לראות איך המערכת מתמודדת עם קטע רציף. האם הפיסוק נשמר? נראה שכן.",
+        "segments": [
+          {
+            "id": 0,
+            "seek": 0,
+            "start": 0.0,
+            "end": 2.0,
+            "text": " בדיקת תמלול ארוכה יותר.",
+            "tokens": [
+              50364,
+              49959,
+              20530,
+              5548,
+              13965,
+              8430,
+              3072,
+              9404,
+              4142,
+              101,
+              24925,
+              2225,
+              36555,
+              13,
+              50464
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.1711043268442154,
+            "compression_ratio": 1.6266666650772095,
+            "no_speech_prob": 0.003703163005411625
+          },
+          {
+            "id": 1,
+            "seek": 0,
+            "start": 2.0,
+            "end": 5.5,
+            "text": " אני מדבר כמה משפטים ברצף, בלי הפסקות גדולות,",
+            "tokens": [
+              50464,
+              16707,
+              36631,
+              13168,
+              7127,
+              23301,
+              23950,
+              9730,
+              10573,
+              4672,
+              36981,
+              11968,
+              38261,
+              11,
+              11473,
+              42468,
+              31175,
+              11996,
+              8573,
+              5071,
+              15413,
+              7514,
+              9404,
+              5071,
+              11,
+              50639
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.1711043268442154,
+            "compression_ratio": 1.6266666650772095,
+            "no_speech_prob": 0.003703163005411625
+          },
+          {
+            "id": 2,
+            "seek": 0,
+            "start": 5.5,
+            "end": 8.5,
+            "text": " כדי לראות איך המערכת מתמודדת עם קטע רציף.",
+            "tokens": [
+              50639,
+              7127,
+              36679,
+              3883,
+              26412,
+              5071,
+              8428,
+              25988,
+              17270,
+              95,
+              44121,
+              5548,
+              30221,
+              8430,
+              10014,
+              7514,
+              5548,
+              31464,
+              14831,
+              10573,
+              7924,
+              12926,
+              11968,
+              1842,
+              96,
+              13,
+              50789
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.1711043268442154,
+            "compression_ratio": 1.6266666650772095,
+            "no_speech_prob": 0.003703163005411625
+          },
+          {
+            "id": 3,
+            "seek": 0,
+            "start": 8.5,
+            "end": 11.5,
+            "text": " האם הפיסוק נשמר? נראה שכן.",
+            "tokens": [
+              50789,
+              20079,
+              251,
+              31175,
+              27199,
+              19047,
+              11302,
+              5365,
+              8430,
+              2986,
+              30,
+              11302,
+              26412,
+              2225,
+              4113,
+              7460,
+              14388,
+              13,
+              50939
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.1711043268442154,
+            "compression_ratio": 1.6266666650772095,
+            "no_speech_prob": 0.003703163005411625
+          }
+        ],
+        "usage": {
+          "type": "duration",
+          "seconds": 12
+        }
+      },
+      "text": "בדיקת תמלול ארוכה יותר. אני מדבר כמה משפטים ברצף, בלי הפסקות גדולות, כדי לראות איך המערכת מתמודדת עם קטע רציף. האם הפיסוק נשמר? נראה שכן."
+    },
+    {
+      "model": "whisper-1",
+      "clip": "he_en_mixed",
+      "elapsed_s": 5.59,
+      "response_format": "verbose_json",
+      "prompt_len": 58,
+      "request": {
+        "url": "https://api.openai.com/v1/audio/transcriptions",
+        "headers": {
+          "Authorization": "Bearer <KEY>"
+        },
+        "multipart_fields": {
+          "model": "whisper-1",
+          "response_format": "verbose_json",
+          "language": "he",
+          "prompt": "Common terms: Kubernetes, React, git push, ביטולים, פגישה."
+        },
+        "file": {
+          "name": "audio.wav",
+          "mime": "audio/wav",
+          "bytes": 1276554,
+          "format": "16 kHz mono PCM16 WAV"
+        }
+      },
+      "response": {
+        "task": "transcribe",
+        "language": "hebrew",
+        "duration": 39.88999938964844,
+        "text": "אני רוצה לבדוק את הפיצול הקטעים. The recording should be split into several pieces before it is sent. כל קטע נשלח בחיבור נפרד לסרט, ואז מחברים את הטקסט בחזרה. The sentence is in English, so we can see how the router handles mixed speech. אחר כך, אנחנו בודקים שהמילים בגבול בין הקטעים לא נחתכות. The splitter cuts at the quietest frame inside the window. אם אין שקט מספיק, הוא חותך בכוח ומתחיל את הקטע הבא שנייה אחורה. That overlap means a boundary word appears whole in the next piece. לסיום, אנחנו בודקים שהתמלול המלא קרי והגיוני. תודה.",
+        "segments": [
+          {
+            "id": 0,
+            "seek": 0,
+            "start": 0.0,
+            "end": 2.5999999046325684,
+            "text": " אני רוצה לבדוק את הפיצול הקטעים.",
+            "tokens": [
+              50364,
+              16707,
+              41927,
+              2225,
+              5001,
+              4349,
+              241,
+              19047,
+              9625,
+              2922,
+              9730,
+              37528,
+              9404,
+              33866,
+              10573,
+              7924,
+              4672,
+              13,
+              50494
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.23011307418346405,
+            "compression_ratio": 1.534426212310791,
+            "no_speech_prob": 0.056213535368442535
+          },
+          {
+            "id": 1,
+            "seek": 0,
+            "start": 2.799999952316284,
+            "end": 7.0,
+            "text": " The recording should be split into several pieces before it is sent.",
+            "tokens": [
+              50504,
+              440,
+              6613,
+              820,
+              312,
+              7472,
+              666,
+              2940,
+              3755,
+              949,
+              309,
+              307,
+              2279,
+              13,
+              50714
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.23011307418346405,
+            "compression_ratio": 1.534426212310791,
+            "no_speech_prob": 0.056213535368442535
+          },
+          {
+            "id": 2,
+            "seek": 0,
+            "start": 7.199999809265137,
+            "end": 12.199999809265137,
+            "text": " כל קטע נשלח בחיבור נפרד לסרט, ואז מחברים את הטקסט בחזרה.",
+            "tokens": [
+              50724,
+              21547,
+              14831,
+              10573,
+              7924,
+              11302,
+              43911,
+              7749,
+              47017,
+              19887,
+              8843,
+              11302,
+              32029,
+              7514,
+              5001,
+              94,
+              46323,
+              11,
+              40298,
+              244,
+              42644,
+              38228,
+              9625,
+              3723,
+              246,
+              8573,
+              11996,
+              10573,
+              47017,
+              20316,
+              36279,
+              13,
+              50974
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.23011307418346405,
+            "compression_ratio": 1.534426212310791,
+            "no_speech_prob": 0.056213535368442535
+          },
+          {
+            "id": 3,
+            "seek": 0,
+            "start": 12.600000381469727,
+            "end": 17.200000762939453,
+            "text": " The sentence is in English, so we can see how the router handles mixed speech.",
+            "tokens": [
+              50994,
+              440,
+              8174,
+              307,
+              294,
+              3669,
+              11,
+              370,
+              321,
+              393,
+              536,
+              577,
+              264,
+              22492,
+              18722,
+              7467,
+              6218,
+              13,
+              51224
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.23011307418346405,
+            "compression_ratio": 1.534426212310791,
+            "no_speech_prob": 0.056213535368442535
+          },
+          {
+            "id": 4,
+            "seek": 0,
+            "start": 17.600000381469727,
+            "end": 22.0,
+            "text": " אחר כך, אנחנו בודקים שהמילים בגבול בין הקטעים לא נחתכות.",
+            "tokens": [
+              51244,
+              20505,
+              2986,
+              7127,
+              17294,
+              11,
+              30948,
+              11473,
+              10014,
+              8573,
+              4672,
+              19208,
+              8430,
+              14507,
+              4672,
+              6044,
+              240,
+              5838,
+              9404,
+              11473,
+              15938,
+              33866,
+              10573,
+              7924,
+              4672,
+              12471,
+              11302,
+              7749,
+              5548,
+              7460,
+              5071,
+              13,
+              51464
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.23011307418346405,
+            "compression_ratio": 1.534426212310791,
+            "no_speech_prob": 0.056213535368442535
+          },
+          {
+            "id": 5,
+            "seek": 0,
+            "start": 22.399999618530273,
+            "end": 25.799999237060547,
+            "text": " The splitter cuts at the quietest frame inside the window.",
+            "tokens": [
+              51484,
+              440,
+              4732,
+              3904,
+              9992,
+              412,
+              264,
+              5677,
+              377,
+              3920,
+              1854,
+              264,
+              4910,
+              13,
+              51654
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.23011307418346405,
+            "compression_ratio": 1.534426212310791,
+            "no_speech_prob": 0.056213535368442535
+          },
+          {
+            "id": 6,
+            "seek": 2580,
+            "start": 26.0,
+            "end": 30.600000381469727,
+            "text": " אם אין שקט מספיק, הוא חותך בכוח ומתחיל את הקטע הבא שנייה אחורה.",
+            "tokens": [
+              50374,
+              36517,
+              8428,
+              15938,
+              4113,
+              8573,
+              10573,
+              32904,
+              9730,
+              20530,
+              11,
+              23666,
+              12400,
+              5071,
+              17294,
+              39150,
+              25400,
+              7666,
+              9202,
+              103,
+              7749,
+              14507,
+              9625,
+              33866,
+              10573,
+              7924,
+              43974,
+              238,
+              4113,
+              22348,
+              11920,
+              20505,
+              37238,
+              13,
+              50604
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.15593068301677704,
+            "compression_ratio": 1.3650000095367432,
+            "no_speech_prob": 0.012032480910420418
+          },
+          {
+            "id": 7,
+            "seek": 2580,
+            "start": 31.0,
+            "end": 35.0,
+            "text": " That overlap means a boundary word appears whole in the next piece.",
+            "tokens": [
+              50624,
+              663,
+              19959,
+              1355,
+              257,
+              12866,
+              1349,
+              7038,
+              1379,
+              294,
+              264,
+              958,
+              2522,
+              13,
+              50824
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.15593068301677704,
+            "compression_ratio": 1.3650000095367432,
+            "no_speech_prob": 0.012032480910420418
+          },
+          {
+            "id": 8,
+            "seek": 2580,
+            "start": 35.400001525878906,
+            "end": 39.79999923706055,
+            "text": " לסיום, אנחנו בודקים שהתמלול המלא קרי והגיוני. תודה.",
+            "tokens": [
+              50844,
+              5001,
+              94,
+              1380,
+              17333,
+              11,
+              30948,
+              11473,
+              10014,
+              8573,
+              4672,
+              19208,
+              5548,
+              8430,
+              3072,
+              9404,
+              32357,
+              29521,
+              14831,
+              38339,
+              28628,
+              10564,
+              1380,
+              1683,
+              10361,
+              13,
+              13965,
+              41403,
+              13,
+              51064
+            ],
+            "temperature": 0.0,
+            "avg_logprob": -0.15593068301677704,
+            "compression_ratio": 1.3650000095367432,
+            "no_speech_prob": 0.012032480910420418
+          }
+        ],
+        "usage": {
+          "type": "duration",
+          "seconds": 40
+        }
+      },
+      "text": "אני רוצה לבדוק את הפיצול הקטעים. The recording should be split into several pieces before it is sent. כל קטע נשלח בחיבור נפרד לסרט, ואז מחברים את הטקסט בחזרה. The sentence is in English, so we can see how the router handles mixed speech. אחר כך, אנחנו בודקים שהמילים בגבול בין הקטעים לא נחתכות. The splitter cuts at the quietest frame inside the window. אם אין שקט מספיק, הוא חותך בכוח ומתחיל את הקטע הבא שנייה אחורה. That overlap means a boundary word appears whole in the next piece. לסיום, אנחנו בודקים שהתמלול המלא קרי והגיוני. תודה."
+    }
+  ]
+}

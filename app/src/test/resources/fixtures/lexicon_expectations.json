@@ -1,0 +1,1006 @@
+{
+ "source": "lia desktop lexicon.py",
+ "dictionary_sha256_prefix": "9bd95042",
+ "cases": [
+  {
+   "word": "ביטולין",
+   "valid": false,
+   "fixed": "ביטולים"
+  },
+  {
+   "word": "לביטולין",
+   "valid": false,
+   "fixed": "לביטולים"
+  },
+  {
+   "word": "ובביטולין",
+   "valid": false,
+   "fixed": "ובביטולים"
+  },
+  {
+   "word": "מעונין",
+   "valid": false,
+   "fixed": null
+  },
+  {
+   "word": "הבנין",
+   "valid": false,
+   "fixed": null
+  },
+  {
+   "word": "נישואין",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "רבין",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "עירובין",
+   "valid": false,
+   "fixed": null
+  },
+  {
+   "word": "קנין",
+   "valid": false,
+   "fixed": null
+  },
+  {
+   "word": "דין",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "מין",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "ענין",
+   "valid": false,
+   "fixed": null
+  },
+  {
+   "word": "בנין",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "אין",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "שלום",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "פגישה",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "מחשב",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "ביטולים",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "מעוניין",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "בניין",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "שיננין",
+   "valid": false,
+   "fixed": "שיננים"
+  },
+  {
+   "word": "חמקניין",
+   "valid": false,
+   "fixed": "חמקניים"
+  },
+  {
+   "word": "נזהרין",
+   "valid": false,
+   "fixed": "נזהרים"
+  },
+  {
+   "word": "אקזיסטנציאליין",
+   "valid": false,
+   "fixed": "אקזיסטנציאליים"
+  },
+  {
+   "word": "מינופין",
+   "valid": false,
+   "fixed": "מינופים"
+  },
+  {
+   "word": "סיסטמטיין",
+   "valid": false,
+   "fixed": "סיסטמטיים"
+  },
+  {
+   "word": "מגיהין",
+   "valid": false,
+   "fixed": "מגיהים"
+  },
+  {
+   "word": "מצחיקנין",
+   "valid": false,
+   "fixed": "מצחיקנים"
+  },
+  {
+   "word": "איודין",
+   "valid": false,
+   "fixed": "איודים"
+  },
+  {
+   "word": "ניחמין",
+   "valid": false,
+   "fixed": "ניחמים"
+  },
+  {
+   "word": "ביסקוויטין",
+   "valid": false,
+   "fixed": "ביסקוויטים"
+  },
+  {
+   "word": "נזבחין",
+   "valid": false,
+   "fixed": "נזבחים"
+  },
+  {
+   "word": "מסונפין",
+   "valid": false,
+   "fixed": "מסונפים"
+  },
+  {
+   "word": "פסיפסין",
+   "valid": false,
+   "fixed": "פסיפסים"
+  },
+  {
+   "word": "מתנתקין",
+   "valid": false,
+   "fixed": "מתנתקים"
+  },
+  {
+   "word": "רפ\"קין",
+   "valid": false,
+   "fixed": "רפ\"קים"
+  },
+  {
+   "word": "מונופוליסטיין",
+   "valid": false,
+   "fixed": "מונופוליסטיים"
+  },
+  {
+   "word": "מושתלין",
+   "valid": false,
+   "fixed": "מושתלים"
+  },
+  {
+   "word": "מעגנין",
+   "valid": false,
+   "fixed": "מעגנים"
+  },
+  {
+   "word": "מתלפפין",
+   "valid": false,
+   "fixed": "מתלפפים"
+  },
+  {
+   "word": "כורתין",
+   "valid": false,
+   "fixed": "כורתים"
+  },
+  {
+   "word": "מולנין",
+   "valid": false,
+   "fixed": "מולנים"
+  },
+  {
+   "word": "מתחרפנין",
+   "valid": false,
+   "fixed": "מתחרפנים"
+  },
+  {
+   "word": "תאיסטין",
+   "valid": false,
+   "fixed": "תאיסטים"
+  },
+  {
+   "word": "מבקרין",
+   "valid": false,
+   "fixed": "מבקרים"
+  },
+  {
+   "word": "מתעוותין",
+   "valid": false,
+   "fixed": "מתעוותים"
+  },
+  {
+   "word": "מכנפין",
+   "valid": false,
+   "fixed": "מכנפים"
+  },
+  {
+   "word": "נודפין",
+   "valid": false,
+   "fixed": "נודפים"
+  },
+  {
+   "word": "ערגולין",
+   "valid": false,
+   "fixed": "ערגולים"
+  },
+  {
+   "word": "גנוטיפין",
+   "valid": false,
+   "fixed": "גנוטיפים"
+  },
+  {
+   "word": "מלובין",
+   "valid": false,
+   "fixed": "מלובים"
+  },
+  {
+   "word": "הומוגרפין",
+   "valid": false,
+   "fixed": "הומוגרפים"
+  },
+  {
+   "word": "תבחינין",
+   "valid": false,
+   "fixed": "תבחינים"
+  },
+  {
+   "word": "אמריקנין",
+   "valid": false,
+   "fixed": "אמריקנים"
+  },
+  {
+   "word": "קולנועיין",
+   "valid": false,
+   "fixed": "קולנועיים"
+  },
+  {
+   "word": "פוגרומין",
+   "valid": false,
+   "fixed": "פוגרומים"
+  },
+  {
+   "word": "מזיחין",
+   "valid": false,
+   "fixed": "מזיחים"
+  },
+  {
+   "word": "עצמאיין",
+   "valid": false,
+   "fixed": "עצמאיים"
+  },
+  {
+   "word": "פונולוגיין",
+   "valid": false,
+   "fixed": "פונולוגיים"
+  },
+  {
+   "word": "נשברין",
+   "valid": false,
+   "fixed": "נשברים"
+  },
+  {
+   "word": "טסטרין",
+   "valid": false,
+   "fixed": "טסטרים"
+  },
+  {
+   "word": "מרווחין",
+   "valid": false,
+   "fixed": "מרווחים"
+  },
+  {
+   "word": "תלתנין",
+   "valid": false,
+   "fixed": "תלתנים"
+  },
+  {
+   "word": "מאוחזרין",
+   "valid": false,
+   "fixed": "מאוחזרים"
+  },
+  {
+   "word": "פגרין",
+   "valid": false,
+   "fixed": "פגרים"
+  },
+  {
+   "word": "קסומין",
+   "valid": false,
+   "fixed": "קסומים"
+  },
+  {
+   "word": "לימודין",
+   "valid": false,
+   "fixed": "לימודים"
+  },
+  {
+   "word": "פובליציסטיין",
+   "valid": false,
+   "fixed": "פובליציסטיים"
+  },
+  {
+   "word": "טרנספורין",
+   "valid": false,
+   "fixed": "טרנספורים"
+  },
+  {
+   "word": "רשעין",
+   "valid": false,
+   "fixed": "רשעים"
+  },
+  {
+   "word": "ביטוחיין",
+   "valid": false,
+   "fixed": "ביטוחיים"
+  },
+  {
+   "word": "תמוכין",
+   "valid": false,
+   "fixed": "תמוכים"
+  },
+  {
+   "word": "הידרודינמיין",
+   "valid": false,
+   "fixed": "הידרודינמיים"
+  },
+  {
+   "word": "נבלין",
+   "valid": false,
+   "fixed": "נבלים"
+  },
+  {
+   "word": "שנואין",
+   "valid": false,
+   "fixed": "שנואים"
+  },
+  {
+   "word": "אבלין",
+   "valid": false,
+   "fixed": "אבלים"
+  },
+  {
+   "word": "חולקין",
+   "valid": false,
+   "fixed": "חולקים"
+  },
+  {
+   "word": "יצירתיין",
+   "valid": false,
+   "fixed": "יצירתיים"
+  },
+  {
+   "word": "גיבויין",
+   "valid": false,
+   "fixed": "גיבויים"
+  },
+  {
+   "word": "גדרין",
+   "valid": false,
+   "fixed": "גדרים"
+  },
+  {
+   "word": "הונגרין",
+   "valid": false,
+   "fixed": "הונגרים"
+  },
+  {
+   "word": "סיקריקין",
+   "valid": false,
+   "fixed": "סיקריקים"
+  },
+  {
+   "word": "תפנין",
+   "valid": false,
+   "fixed": "תפנים"
+  },
+  {
+   "word": "מסותתין",
+   "valid": false,
+   "fixed": "מסותתים"
+  },
+  {
+   "word": "חולייתנין",
+   "valid": false,
+   "fixed": "חולייתנים"
+  },
+  {
+   "word": "היגוין",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "אורתודוקסין",
+   "valid": false,
+   "fixed": "אורתודוקסים"
+  },
+  {
+   "word": "מפגעין",
+   "valid": false,
+   "fixed": "מפגעים"
+  },
+  {
+   "word": "מתפארין",
+   "valid": false,
+   "fixed": "מתפארים"
+  },
+  {
+   "word": "פקוחין",
+   "valid": false,
+   "fixed": "פקוחים"
+  },
+  {
+   "word": "והאבין",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "נכריין",
+   "valid": false,
+   "fixed": "נכריים"
+  },
+  {
+   "word": "תועין",
+   "valid": false,
+   "fixed": "תועים"
+  },
+  {
+   "word": "נינין",
+   "valid": false,
+   "fixed": "נינים"
+  },
+  {
+   "word": "מוזילין",
+   "valid": false,
+   "fixed": "מוזילים"
+  },
+  {
+   "word": "חומטין",
+   "valid": false,
+   "fixed": "חומטים"
+  },
+  {
+   "word": "קוראין",
+   "valid": false,
+   "fixed": "קוראים"
+  },
+  {
+   "word": "חקלאיין",
+   "valid": false,
+   "fixed": "חקלאיים"
+  },
+  {
+   "word": "נוכחיין",
+   "valid": false,
+   "fixed": "נוכחיים"
+  },
+  {
+   "word": "מחטפין",
+   "valid": false,
+   "fixed": "מחטפים"
+  },
+  {
+   "word": "מוכללין",
+   "valid": false,
+   "fixed": "מוכללים"
+  },
+  {
+   "word": "קלימטולוגיין",
+   "valid": false,
+   "fixed": "קלימטולוגיים"
+  },
+  {
+   "word": "מובערין",
+   "valid": false,
+   "fixed": "מובערים"
+  },
+  {
+   "word": "אימפריאליסטיין",
+   "valid": false,
+   "fixed": "אימפריאליסטיים"
+  },
+  {
+   "word": "אוסטרליין",
+   "valid": false,
+   "fixed": "אוסטרליים"
+  },
+  {
+   "word": "ציודין",
+   "valid": false,
+   "fixed": "ציודים"
+  },
+  {
+   "word": "מורגלין",
+   "valid": false,
+   "fixed": "מורגלים"
+  },
+  {
+   "word": "מדוכאין",
+   "valid": false,
+   "fixed": "מדוכאים"
+  },
+  {
+   "word": "משולהבין",
+   "valid": false,
+   "fixed": "משולהבים"
+  },
+  {
+   "word": "זנזיבריין",
+   "valid": false,
+   "fixed": "זנזיבריים"
+  },
+  {
+   "word": "מרומזרין",
+   "valid": false,
+   "fixed": "מרומזרים"
+  },
+  {
+   "word": "ארכובין",
+   "valid": false,
+   "fixed": "ארכובים"
+  },
+  {
+   "word": "שביטין",
+   "valid": false,
+   "fixed": "שביטים"
+  },
+  {
+   "word": "מפגלין",
+   "valid": false,
+   "fixed": "מפגלים"
+  },
+  {
+   "word": "שבירין",
+   "valid": false,
+   "fixed": "שבירים"
+  },
+  {
+   "word": "חוטרין",
+   "valid": false,
+   "fixed": "חוטרים"
+  },
+  {
+   "word": "לבירינתין",
+   "valid": false,
+   "fixed": "לבירינתים"
+  },
+  {
+   "word": "יזמין",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "מקובלין",
+   "valid": false,
+   "fixed": "מקובלים"
+  },
+  {
+   "word": "עקרין",
+   "valid": false,
+   "fixed": "עקרים"
+  },
+  {
+   "word": "פסוקין",
+   "valid": false,
+   "fixed": "פסוקים"
+  },
+  {
+   "word": "קרצינוגנין",
+   "valid": false,
+   "fixed": "קרצינוגנים"
+  },
+  {
+   "word": "שאופין",
+   "valid": false,
+   "fixed": null
+  },
+  {
+   "word": "תכנתיין",
+   "valid": false,
+   "fixed": "תכנתיים"
+  },
+  {
+   "word": "פנטזיונרין",
+   "valid": false,
+   "fixed": "פנטזיונרים"
+  },
+  {
+   "word": "אימפרטיביין",
+   "valid": false,
+   "fixed": "אימפרטיביים"
+  },
+  {
+   "word": "מיליטריסטין",
+   "valid": false,
+   "fixed": "מיליטריסטים"
+  },
+  {
+   "word": "מכתרין",
+   "valid": false,
+   "fixed": "מכתרים"
+  },
+  {
+   "word": "מכיירין",
+   "valid": false,
+   "fixed": "מכיירים"
+  },
+  {
+   "word": "הגיוניין",
+   "valid": false,
+   "fixed": "הגיוניים"
+  },
+  {
+   "word": "מוורידין",
+   "valid": false,
+   "fixed": "מוורידים"
+  },
+  {
+   "word": "פראין",
+   "valid": false,
+   "fixed": "פראים"
+  },
+  {
+   "word": "פיג'יאנין",
+   "valid": false,
+   "fixed": "פיג'יאנים"
+  },
+  {
+   "word": "משבטין",
+   "valid": false,
+   "fixed": "משבטים"
+  },
+  {
+   "word": "לחלוחין",
+   "valid": false,
+   "fixed": "לחלוחים"
+  },
+  {
+   "word": "משאילין",
+   "valid": false,
+   "fixed": "משאילים"
+  },
+  {
+   "word": "ייבומין",
+   "valid": false,
+   "fixed": "ייבומים"
+  },
+  {
+   "word": "יידועין",
+   "valid": false,
+   "fixed": "יידועים"
+  },
+  {
+   "word": "מוטפין",
+   "valid": false,
+   "fixed": "מוטפים"
+  },
+  {
+   "word": "סקסוניין",
+   "valid": false,
+   "fixed": "סקסוניים"
+  },
+  {
+   "word": "מסעירין",
+   "valid": false,
+   "fixed": "מסעירים"
+  },
+  {
+   "word": "אינדיבידואליין",
+   "valid": false,
+   "fixed": "אינדיבידואליים"
+  },
+  {
+   "word": "רבידין",
+   "valid": false,
+   "fixed": "רבידים"
+  },
+  {
+   "word": "מדושנין",
+   "valid": false,
+   "fixed": "מדושנים"
+  },
+  {
+   "word": "קליקין",
+   "valid": false,
+   "fixed": "קליקים"
+  },
+  {
+   "word": "נזמין",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "כירופרקטין",
+   "valid": false,
+   "fixed": "כירופרקטים"
+  },
+  {
+   "word": "דיקטטורין",
+   "valid": false,
+   "fixed": "דיקטטורים"
+  },
+  {
+   "word": "הומונימין",
+   "valid": false,
+   "fixed": "הומונימים"
+  },
+  {
+   "word": "תוקפין",
+   "valid": false,
+   "fixed": "תוקפים"
+  },
+  {
+   "word": "פנימייתיין",
+   "valid": false,
+   "fixed": "פנימייתיים"
+  },
+  {
+   "word": "דבקונין",
+   "valid": false,
+   "fixed": "דבקונים"
+  },
+  {
+   "word": "מועמקין",
+   "valid": false,
+   "fixed": "מועמקים"
+  },
+  {
+   "word": "אורגניסטין",
+   "valid": false,
+   "fixed": "אורגניסטים"
+  },
+  {
+   "word": "מעופפין",
+   "valid": false,
+   "fixed": "מעופפים"
+  },
+  {
+   "word": "מתעשין",
+   "valid": false,
+   "fixed": null
+  },
+  {
+   "word": "בולענין",
+   "valid": false,
+   "fixed": "בולענים"
+  },
+  {
+   "word": "תריסרין",
+   "valid": false,
+   "fixed": "תריסרים"
+  },
+  {
+   "word": "ימאין",
+   "valid": false,
+   "fixed": "ימאים"
+  },
+  {
+   "word": "מתמגנטין",
+   "valid": false,
+   "fixed": "מתמגנטים"
+  },
+  {
+   "word": "נזלתיין",
+   "valid": false,
+   "fixed": "נזלתיים"
+  },
+  {
+   "word": "כוהליין",
+   "valid": false,
+   "fixed": "כוהליים"
+  },
+  {
+   "word": "תדהין",
+   "valid": false,
+   "fixed": "תדהים"
+  },
+  {
+   "word": "התקפיין",
+   "valid": false,
+   "fixed": "התקפיים"
+  },
+  {
+   "word": "ערפלין",
+   "valid": false,
+   "fixed": "ערפלים"
+  },
+  {
+   "word": "מפחמין",
+   "valid": false,
+   "fixed": "מפחמים"
+  },
+  {
+   "word": "צ'צ'נין",
+   "valid": false,
+   "fixed": "צ'צ'נים"
+  },
+  {
+   "word": "מפליאין",
+   "valid": false,
+   "fixed": "מפליאים"
+  },
+  {
+   "word": "חותמין",
+   "valid": false,
+   "fixed": "חותמים"
+  },
+  {
+   "word": "מוכתבין",
+   "valid": false,
+   "fixed": "מוכתבים"
+  },
+  {
+   "word": "תוחבין",
+   "valid": false,
+   "fixed": "תוחבים"
+  },
+  {
+   "word": "בישולין",
+   "valid": false,
+   "fixed": "בישולים"
+  },
+  {
+   "word": "ספקטרוסקופין",
+   "valid": false,
+   "fixed": "ספקטרוסקופים"
+  },
+  {
+   "word": "מרעידין",
+   "valid": false,
+   "fixed": "מרעידים"
+  },
+  {
+   "word": "מוכרתין",
+   "valid": false,
+   "fixed": "מוכרתים"
+  },
+  {
+   "word": "קוקטיין",
+   "valid": false,
+   "fixed": "קוקטיים"
+  },
+  {
+   "word": "נבוטין",
+   "valid": false,
+   "fixed": "נבוטים"
+  },
+  {
+   "word": "תכופין",
+   "valid": false,
+   "fixed": "תכופים"
+  },
+  {
+   "word": "חילוטין",
+   "valid": false,
+   "fixed": "חילוטים"
+  },
+  {
+   "word": "זימונין",
+   "valid": false,
+   "fixed": "זימונים"
+  },
+  {
+   "word": "פספורטין",
+   "valid": false,
+   "fixed": "פספורטים"
+  },
+  {
+   "word": "שחורין",
+   "valid": true,
+   "fixed": null
+  },
+  {
+   "word": "תאוסופיין",
+   "valid": false,
+   "fixed": "תאוסופיים"
+  },
+  {
+   "word": "זיפותין",
+   "valid": false,
+   "fixed": "זיפותים"
+  },
+  {
+   "word": "משנוררין",
+   "valid": false,
+   "fixed": "משנוררים"
+  },
+  {
+   "word": "טנזורין",
+   "valid": false,
+   "fixed": "טנזורים"
+  },
+  {
+   "word": "מברכין",
+   "valid": false,
+   "fixed": "מברכים"
+  },
+  {
+   "word": "ארוגין",
+   "valid": false,
+   "fixed": "ארוגים"
+  },
+  {
+   "word": "נחשין",
+   "valid": false,
+   "fixed": "נחשים"
+  },
+  {
+   "word": "קוסמטיקאין",
+   "valid": false,
+   "fixed": "קוסמטיקאים"
+  },
+  {
+   "word": "רוזנין",
+   "valid": false,
+   "fixed": "רוזנים"
+  },
+  {
+   "word": "גולשין",
+   "valid": false,
+   "fixed": "גולשים"
+  },
+  {
+   "word": "נאהבין",
+   "valid": false,
+   "fixed": "נאהבים"
+  },
+  {
+   "word": "מבאסין",
+   "valid": false,
+   "fixed": "מבאסים"
+  },
+  {
+   "word": "קולטין",
+   "valid": false,
+   "fixed": "קולטים"
+  },
+  {
+   "word": "משלטין",
+   "valid": false,
+   "fixed": "משלטים"
+  },
+  {
+   "word": "ניטלין",
+   "valid": false,
+   "fixed": "ניטלים"
+  },
+  {
+   "word": "זהבהבין",
+   "valid": false,
+   "fixed": "זהבהבים"
+  },
+  {
+   "word": "פסיכיין",
+   "valid": false,
+   "fixed": "פסיכיים"
+  },
+  {
+   "word": "לחיצין",
+   "valid": false,
+   "fixed": "לחיצים"
+  }
+ ]
+}

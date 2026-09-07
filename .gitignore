@@ -1,0 +1,28 @@
+# Gradle / Android
+.gradle/
+build/
+local.properties
+*.apk
+*.aab
+*.keystore
+*.jks
+captures/
+.externalNativeBuild/
+.cxx/
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+
+# Python probes
+__pycache__/
+*.pyc
+
+# Generated fixtures too large to commit (rebuild with tools/probe_split.py)
+fixtures/long_mixed.wav
+fixtures/long_varied.wav
+
+# Never commit a real secret or a real transcript
+fixtures/*_private.json
+tools/.env

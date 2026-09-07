@@ -1,0 +1,358 @@
+{
+  "backend": "server",
+  "protocol": "lia-serve (WhisperLive-shaped, batch)",
+  "url": "ws://100.64.0.1:9090",
+  "results": [
+    {
+      "clip": "he_short",
+      "seconds": 2.77,
+      "pieces": [
+        2.77
+      ],
+      "elapsed_s": 0.3,
+      "text": "שלום, בדיקה של המערכת.",
+      "frames_first_piece": [
+        {
+          "t": 0.004,
+          "dir": "client->server",
+          "opcode": "text",
+          "payload": {
+            "uid": "961ad511-658b-47e6-88fa-db425df2c2d0",
+            "language": "he",
+            "task": "transcribe",
+            "model": "large-v3-turbo",
+            "use_vad": true,
+            "send_last_n_segments": 1000,
+            "initial_prompt": null
+          }
+        },
+        {
+          "t": 0.005,
+          "dir": "server->client",
+          "opcode": "text",
+          "payload": {
+            "uid": "961ad511-658b-47e6-88fa-db425df2c2d0",
+            "message": "SERVER_READY",
+            "backend": "faster_whisper"
+          }
+        },
+        {
+          "t": 0.005,
+          "dir": "client->server",
+          "opcode": "binary",
+          "payload": "<float32 le pcm, 177340 bytes, 44335 samples>"
+        },
+        {
+          "t": 0.005,
+          "dir": "client->server",
+          "opcode": "binary",
+          "payload": "END_OF_AUDIO"
+        },
+        {
+          "t": 0.301,
+          "dir": "server->client",
+          "opcode": "text",
+          "payload": {
+            "uid": "961ad511-658b-47e6-88fa-db425df2c2d0",
+            "segments": [
+              {
+                "start": 0.0,
+                "end": 2.7509375,
+                "text": " שלום, בדיקה של המערכת.",
+                "completed": true
+              }
+            ]
+          }
+        },
+        {
+          "t": 0.301,
+          "dir": "server->client",
+          "opcode": "text",
+          "payload": {
+            "uid": "961ad511-658b-47e6-88fa-db425df2c2d0",
+            "message": "DISCONNECT"
+          }
+        }
+      ]
+    },
+    {
+      "clip": "he_medium",
+      "seconds": 5.01,
+      "pieces": [
+        5.01
+      ],
+      "elapsed_s": 0.23,
+      "text": "אני מקליט עכשיו הודעה קצרה כדי לבדוק את איכות התמלול של המערכת החדשה.",
+      "frames_first_piece": [
+        {
+          "t": 0.02,
+          "dir": "client->server",
+          "opcode": "text",
+          "payload": {
+            "uid": "04d96ec9-e51e-485e-a68f-291929cdd5e8",
+            "language": "he",
+            "task": "transcribe",
+            "model": "large-v3-turbo",
+            "use_vad": true,
+            "send_last_n_segments": 1000,
+            "initial_prompt": null
+          }
+        },
+        {
+          "t": 0.02,
+          "dir": "server->client",
+          "opcode": "text",
+          "payload": {
+            "uid": "04d96ec9-e51e-485e-a68f-291929cdd5e8",
+            "message": "SERVER_READY",
+            "backend": "faster_whisper"
+          }
+        },
+        {
+          "t": 0.022,
+          "dir": "client->server",
+          "opcode": "binary",
+          "payload": "<float32 le pcm, 320700 bytes, 80175 samples>"
+        },
+        {
+          "t": 0.022,
+          "dir": "client->server",
+          "opcode": "binary",
+          "payload": "END_OF_AUDIO"
+        },
+        {
+          "t": 0.23,
+          "dir": "server->client",
+          "opcode": "text",
+          "payload": {
+            "uid": "04d96ec9-e51e-485e-a68f-291929cdd5e8",
+            "segments": [
+              {
+                "start": 0.0,
+                "end": 4.9909375,
+                "text": " אני מקליט עכשיו הודעה קצרה כדי לבדוק את איכות התמלול של המערכת החדשה.",
+                "completed": true
+              }
+            ]
+          }
+        },
+        {
+          "t": 0.23,
+          "dir": "server->client",
+          "opcode": "text",
+          "payload": {
+            "uid": "04d96ec9-e51e-485e-a68f-291929cdd5e8",
+            "message": "DISCONNECT"
+          }
+        }
+      ]
+    },
+    {
+      "clip": "he_long",
+      "seconds": 11.37,
+      "pieces": [
+        11.37
+      ],
+      "elapsed_s": 0.28,
+      "text": "בדיקת תמלול ארוכה יותר. אני מדבר כמה משפטים ברצף, בלי הפסקות גדולות, כדי לראות איך המערכת מתמודדת עם קטע רציף. האם הפיסוק נשמר? נראה שכן.",
+      "frames_first_piece": [
+        {
+          "t": 0.001,
+          "dir": "client->server",
+          "opcode": "text",
+          "payload": {
+            "uid": "fc156312-9864-4d94-a833-60a667479857",
+            "language": "he",
+            "task": "transcribe",
+            "model": "large-v3-turbo",
+            "use_vad": true,
+            "send_last_n_segments": 1000,
+            "initial_prompt": null
+          }
+        },
+        {
+          "t": 0.001,
+          "dir": "server->client",
+          "opcode": "text",
+          "payload": {
+            "uid": "fc156312-9864-4d94-a833-60a667479857",
+            "message": "SERVER_READY",
+            "backend": "faster_whisper"
+          }
+        },
+        {
+          "t": 0.004,
+          "dir": "client->server",
+          "opcode": "binary",
+          "payload": "<float32 le pcm, 727740 bytes, 181935 samples>"
+        },
+        {
+          "t": 0.004,
+          "dir": "client->server",
+          "opcode": "binary",
+          "payload": "END_OF_AUDIO"
+        },
+        {
+          "t": 0.283,
+          "dir": "server->client",
+          "opcode": "text",
+          "payload": {
+            "uid": "fc156312-9864-4d94-a833-60a667479857",
+            "segments": [
+              {
+                "start": 0.0,
+                "end": 1.5,
+                "text": " בדיקת תמלול ארוכה יותר.",
+                "completed": true
+              },
+              {
+                "start": 2.24,
+                "end": 5.1,
+                "text": " אני מדבר כמה משפטים ברצף, בלי הפסקות גדולות,",
+                "completed": true
+              },
+              {
+                "start": 5.66,
+                "end": 8.2,
+                "text": " כדי לראות איך המערכת מתמודדת עם קטע רציף.",
+                "completed": true
+              },
+              {
+                "start": 8.96,
+                "end": 9.66,
+                "text": " האם הפיסוק נשמר?",
+                "completed": true
+              },
+              {
+                "start": 10.56,
+                "end": 11.3509375,
+                "text": " נראה שכן.",
+                "completed": true
+              }
+            ]
+          }
+        },
+        {
+          "t": 0.283,
+          "dir": "server->client",
+          "opcode": "text",
+          "payload": {
+            "uid": "fc156312-9864-4d94-a833-60a667479857",
+            "message": "DISCONNECT"
+          }
+        }
+      ]
+    },
+    {
+      "clip": "he_en_mixed",
+      "seconds": 39.89,
+      "pieces": [
+        17.82,
+        17.7,
+        4.38
+      ],
+      "elapsed_s": 0.82,
+      "text": "אני רוצה לבדוק את הפיצול הקטעים. The recording should be split into several pieces before a descent. כל קטע נשלח בחיבור נפרד לשרט, ואז מחברים את הטקסט בחזרה. The sentence is an English, so we can see how the router handles mixed speech. אחר כך אנחנו בודקים שהמילים בגבול בין הקטעים לא נחתכות. The splitter cuts at the quietest frame inside the window. אם אין שקט מספיק, הוא חותך בכוח ומתחיל את הקטע הבא שנייה אחורה. That overlap means a boundary word appears whole in the next piece. לסיום אנחנו בודקים שהתמלול המלא קריא והגיוני. תודה.",
+      "frames_first_piece": [
+        {
+          "t": 0.017,
+          "dir": "client->server",
+          "opcode": "text",
+          "payload": {
+            "uid": "44950dc6-8c7b-4007-b607-7bfb3a6c9966",
+            "language": "he",
+            "task": "transcribe",
+            "model": "large-v3-turbo",
+            "use_vad": true,
+            "send_last_n_segments": 1000,
+            "initial_prompt": null
+          }
+        },
+        {
+          "t": 0.017,
+          "dir": "server->client",
+          "opcode": "text",
+          "payload": {
+            "uid": "44950dc6-8c7b-4007-b607-7bfb3a6c9966",
+            "message": "SERVER_READY",
+            "backend": "faster_whisper"
+          }
+        },
+        {
+          "t": 0.023,
+          "dir": "client->server",
+          "opcode": "binary",
+          "payload": "<float32 le pcm, 1140160 bytes, 285040 samples>"
+        },
+        {
+          "t": 0.023,
+          "dir": "client->server",
+          "opcode": "binary",
+          "payload": "END_OF_AUDIO"
+        },
+        {
+          "t": 0.328,
+          "dir": "server->client",
+          "opcode": "text",
+          "payload": {
+            "uid": "44950dc6-8c7b-4007-b607-7bfb3a6c9966",
+            "segments": [
+              {
+                "start": 0.0,
+                "end": 2.4,
+                "text": " אני רוצה לבדוק את הפיצול הקטעים.",
+                "completed": true
+              },
+              {
+                "start": 3.1,
+                "end": 6.62,
+                "text": " The recording should be split into several pieces before a descent.",
+                "completed": true
+              },
+              {
+                "start": 7.52,
+                "end": 9.8,
+                "text": " כל קטע נשלח בחיבור נפרד לשרט,",
+                "completed": true
+              },
+              {
+                "start": 10.32,
+                "end": 11.98,
+                "text": " ואז מחברים את הטקסט בחזרה.",
+                "completed": true
+              },
+              {
+                "start": 12.96,
+                "end": 14.16,
+                "text": " The sentence is an English,",
+                "completed": true
+              },
+              {
+                "start": 14.48,
+                "end": 17.795,
+                "text": " so we can see how the router handles mixed speech.",
+                "completed": true
+              }
+            ]
+          }
+        },
+        {
+          "t": 0.328,
+          "dir": "server->client",
+          "opcode": "text",
+          "payload": {
+            "uid": "44950dc6-8c7b-4007-b607-7bfb3a6c9966",
+            "message": "DISCONNECT"
+          }
+        }
+      ]
+    }
+  ],
+  "unauthorized": {
+    "expected_close_code": 1008,
+    "expected_close_reason": "unauthorized",
+    "observed_first_recv": "",
+    "observed_exception": null,
+    "note": "python websocket-client does not expose the close code; verified instead from the server side (lia.py _reject -> close(1008, 'unauthorized') and the 'serve: unauthorized client rejected' log line). OkHttp reports it in onClosing(code, reason)."
+  }
+}
