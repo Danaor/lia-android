@@ -108,8 +108,13 @@ def transcribe_piece(
     ws.send_binary(END_OF_AUDIO)
     note("client->server", "binary", "END_OF_AUDIO")
 
-    segments: dict[tuple, str] = {}
-    order: list[tuple] = []
+    # The server re-sends the SAME stretch with a later `end` as more audio
+    # arrives, so a segment is identified by its START and the newest text for
+    # that start wins. Keying on (start, end) instead produced a dozen copies of
+    # one growing sentence on a slow uplink (2026-09-08). The tolerance is there
+    # because the same stretch is reported at 2.22 one moment and 2.24 the next.
+    pieces: list[list] = []          # [start, end, text]
+    start_tolerance = 0.25
     last_seg = time.time()
     start = time.time()
     while True:
@@ -138,16 +143,24 @@ def transcribe_piece(
         if data.get("status") == "ERROR":
             raise RuntimeError(f"server error: {data.get('message')}")
         for seg in data.get("segments") or []:
-            key = (round(float(seg.get("start", 0.0)), 2), round(float(seg.get("end", 0.0)), 2))
-            if key not in segments:
-                order.append(key)
-            segments[key] = seg.get("text", "")
+            seg_start = float(seg.get("start", 0.0))
+            seg_end = float(seg.get("end", seg_start))
+            text = seg.get("text", "")
+            hit = next(
+                (p for p in pieces if abs(p[0] - seg_start) <= start_tolerance), None
+            )
+            if hit is None:
+                pieces.append([seg_start, seg_end, text])
+            elif seg_end >= hit[1]:
+                hit[1], hit[2] = seg_end, text
             last_seg = time.time()
     try:
         ws.close()
     except Exception:
         pass
-    text = " ".join((segments[k] or "").strip() for k in order).strip()
+    # Segment texts carry their own leading space; concatenate, do not join.
+    pieces.sort(key=lambda p: p[0])
+    text = "".join(p[2] for p in pieces).strip()
     if frames is not None:
         frames.extend(rec)
     return text, rec

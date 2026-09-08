@@ -9,15 +9,15 @@
       "pieces": [
         2.77
       ],
-      "elapsed_s": 0.3,
+      "elapsed_s": 0.42,
       "text": "שלום, בדיקה של המערכת.",
       "frames_first_piece": [
         {
-          "t": 0.004,
+          "t": 0.005,
           "dir": "client->server",
           "opcode": "text",
           "payload": {
-            "uid": "961ad511-658b-47e6-88fa-db425df2c2d0",
+            "uid": "8399c40a-f7f7-4fed-8b60-764082674f23",
             "language": "he",
             "task": "transcribe",
             "model": "large-v3-turbo",
@@ -27,33 +27,33 @@
           }
         },
         {
-          "t": 0.005,
+          "t": 0.006,
           "dir": "server->client",
           "opcode": "text",
           "payload": {
-            "uid": "961ad511-658b-47e6-88fa-db425df2c2d0",
+            "uid": "8399c40a-f7f7-4fed-8b60-764082674f23",
             "message": "SERVER_READY",
             "backend": "faster_whisper"
           }
         },
         {
-          "t": 0.005,
+          "t": 0.007,
           "dir": "client->server",
           "opcode": "binary",
           "payload": "<float32 le pcm, 177340 bytes, 44335 samples>"
         },
         {
-          "t": 0.005,
+          "t": 0.007,
           "dir": "client->server",
           "opcode": "binary",
           "payload": "END_OF_AUDIO"
         },
         {
-          "t": 0.301,
+          "t": 0.42,
           "dir": "server->client",
           "opcode": "text",
           "payload": {
-            "uid": "961ad511-658b-47e6-88fa-db425df2c2d0",
+            "uid": "8399c40a-f7f7-4fed-8b60-764082674f23",
             "segments": [
               {
                 "start": 0.0,
@@ -65,11 +65,11 @@
           }
         },
         {
-          "t": 0.301,
+          "t": 0.42,
           "dir": "server->client",
           "opcode": "text",
           "payload": {
-            "uid": "961ad511-658b-47e6-88fa-db425df2c2d0",
+            "uid": "8399c40a-f7f7-4fed-8b60-764082674f23",
             "message": "DISCONNECT"
           }
         }
@@ -81,15 +81,15 @@
       "pieces": [
         5.01
       ],
-      "elapsed_s": 0.23,
+      "elapsed_s": 0.19,
       "text": "אני מקליט עכשיו הודעה קצרה כדי לבדוק את איכות התמלול של המערכת החדשה.",
       "frames_first_piece": [
         {
-          "t": 0.02,
+          "t": 0.001,
           "dir": "client->server",
           "opcode": "text",
           "payload": {
-            "uid": "04d96ec9-e51e-485e-a68f-291929cdd5e8",
+            "uid": "e779cd48-2806-4f46-b79e-5488f9f551f5",
             "language": "he",
             "task": "transcribe",
             "model": "large-v3-turbo",
@@ -99,33 +99,33 @@
           }
         },
         {
-          "t": 0.02,
+          "t": 0.002,
           "dir": "server->client",
           "opcode": "text",
           "payload": {
-            "uid": "04d96ec9-e51e-485e-a68f-291929cdd5e8",
+            "uid": "e779cd48-2806-4f46-b79e-5488f9f551f5",
             "message": "SERVER_READY",
             "backend": "faster_whisper"
           }
         },
         {
-          "t": 0.022,
+          "t": 0.003,
           "dir": "client->server",
           "opcode": "binary",
           "payload": "<float32 le pcm, 320700 bytes, 80175 samples>"
         },
         {
-          "t": 0.022,
+          "t": 0.003,
           "dir": "client->server",
           "opcode": "binary",
           "payload": "END_OF_AUDIO"
         },
         {
-          "t": 0.23,
+          "t": 0.186,
           "dir": "server->client",
           "opcode": "text",
           "payload": {
-            "uid": "04d96ec9-e51e-485e-a68f-291929cdd5e8",
+            "uid": "e779cd48-2806-4f46-b79e-5488f9f551f5",
             "segments": [
               {
                 "start": 0.0,
@@ -137,11 +137,11 @@
           }
         },
         {
-          "t": 0.23,
+          "t": 0.186,
           "dir": "server->client",
           "opcode": "text",
           "payload": {
-            "uid": "04d96ec9-e51e-485e-a68f-291929cdd5e8",
+            "uid": "e779cd48-2806-4f46-b79e-5488f9f551f5",
             "message": "DISCONNECT"
           }
         }
@@ -153,15 +153,15 @@
       "pieces": [
         11.37
       ],
-      "elapsed_s": 0.28,
+      "elapsed_s": 0.39,
       "text": "בדיקת תמלול ארוכה יותר. אני מדבר כמה משפטים ברצף, בלי הפסקות גדולות, כדי לראות איך המערכת מתמודדת עם קטע רציף. האם הפיסוק נשמר? נראה שכן.",
       "frames_first_piece": [
         {
-          "t": 0.001,
+          "t": 0.018,
           "dir": "client->server",
           "opcode": "text",
           "payload": {
-            "uid": "fc156312-9864-4d94-a833-60a667479857",
+            "uid": "b613978d-458b-4881-9733-5c856f220598",
             "language": "he",
             "task": "transcribe",
             "model": "large-v3-turbo",
@@ -171,33 +171,33 @@
           }
         },
         {
-          "t": 0.001,
+          "t": 0.019,
           "dir": "server->client",
           "opcode": "text",
           "payload": {
-            "uid": "fc156312-9864-4d94-a833-60a667479857",
+            "uid": "b613978d-458b-4881-9733-5c856f220598",
             "message": "SERVER_READY",
             "backend": "faster_whisper"
           }
         },
         {
-          "t": 0.004,
+          "t": 0.021,
           "dir": "client->server",
           "opcode": "binary",
           "payload": "<float32 le pcm, 727740 bytes, 181935 samples>"
         },
         {
-          "t": 0.004,
+          "t": 0.021,
           "dir": "client->server",
           "opcode": "binary",
           "payload": "END_OF_AUDIO"
         },
         {
-          "t": 0.283,
+          "t": 0.39,
           "dir": "server->client",
           "opcode": "text",
           "payload": {
-            "uid": "fc156312-9864-4d94-a833-60a667479857",
+            "uid": "b613978d-458b-4881-9733-5c856f220598",
             "segments": [
               {
                 "start": 0.0,
@@ -233,11 +233,11 @@
           }
         },
         {
-          "t": 0.283,
+          "t": 0.39,
           "dir": "server->client",
           "opcode": "text",
           "payload": {
-            "uid": "fc156312-9864-4d94-a833-60a667479857",
+            "uid": "b613978d-458b-4881-9733-5c856f220598",
             "message": "DISCONNECT"
           }
         }
@@ -251,15 +251,15 @@
         17.7,
         4.38
       ],
-      "elapsed_s": 0.82,
+      "elapsed_s": 0.88,
       "text": "אני רוצה לבדוק את הפיצול הקטעים. The recording should be split into several pieces before a descent. כל קטע נשלח בחיבור נפרד לשרט, ואז מחברים את הטקסט בחזרה. The sentence is an English, so we can see how the router handles mixed speech. אחר כך אנחנו בודקים שהמילים בגבול בין הקטעים לא נחתכות. The splitter cuts at the quietest frame inside the window. אם אין שקט מספיק, הוא חותך בכוח ומתחיל את הקטע הבא שנייה אחורה. That overlap means a boundary word appears whole in the next piece. לסיום אנחנו בודקים שהתמלול המלא קריא והגיוני. תודה.",
       "frames_first_piece": [
         {
-          "t": 0.017,
+          "t": 0.002,
           "dir": "client->server",
           "opcode": "text",
           "payload": {
-            "uid": "44950dc6-8c7b-4007-b607-7bfb3a6c9966",
+            "uid": "baea864b-9ca7-42dd-984a-c193115f296c",
             "language": "he",
             "task": "transcribe",
             "model": "large-v3-turbo",
@@ -269,33 +269,33 @@
           }
         },
         {
-          "t": 0.017,
+          "t": 0.002,
           "dir": "server->client",
           "opcode": "text",
           "payload": {
-            "uid": "44950dc6-8c7b-4007-b607-7bfb3a6c9966",
+            "uid": "baea864b-9ca7-42dd-984a-c193115f296c",
             "message": "SERVER_READY",
             "backend": "faster_whisper"
           }
         },
         {
-          "t": 0.023,
+          "t": 0.008,
           "dir": "client->server",
           "opcode": "binary",
           "payload": "<float32 le pcm, 1140160 bytes, 285040 samples>"
         },
         {
-          "t": 0.023,
+          "t": 0.008,
           "dir": "client->server",
           "opcode": "binary",
           "payload": "END_OF_AUDIO"
         },
         {
-          "t": 0.328,
+          "t": 0.312,
           "dir": "server->client",
           "opcode": "text",
           "payload": {
-            "uid": "44950dc6-8c7b-4007-b607-7bfb3a6c9966",
+            "uid": "baea864b-9ca7-42dd-984a-c193115f296c",
             "segments": [
               {
                 "start": 0.0,
@@ -337,11 +337,11 @@
           }
         },
         {
-          "t": 0.328,
+          "t": 0.312,
           "dir": "server->client",
           "opcode": "text",
           "payload": {
-            "uid": "44950dc6-8c7b-4007-b607-7bfb3a6c9966",
+            "uid": "baea864b-9ca7-42dd-984a-c193115f296c",
             "message": "DISCONNECT"
           }
         }

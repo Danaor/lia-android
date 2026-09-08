@@ -23,7 +23,7 @@ import okio.ByteString
 import okio.ByteString.Companion.toByteString
 import java.util.UUID
 import java.util.concurrent.TimeUnit
-import kotlin.math.round
+import kotlin.math.abs
 
 /**
  * The home transcription server: Lia Desktop running `lia.py --serve`
@@ -200,22 +200,52 @@ class ServerBackend(
         }
     }
 
+    /** One stretch of speech, as the server keeps refining it. */
+    private class Piece(val start: Double, var end: Double, var text: String)
+
+    /**
+     * Accumulates the server's stream into one transcript.
+     *
+     * How the server actually behaves, measured against the live one rather
+     * than assumed: it sends ONE segment per message and keeps re-sending the
+     * same stretch with a later `end` as more audio arrives - 0.0 to 1.0, then
+     * 0.0 to 1.48, then on to the next stretch at 2.24. A segment is therefore
+     * identified by its START, the newest text for that start is the right one,
+     * and the transcript is those pieces in time order.
+     *
+     * How fast the audio reaches the server decides whether this matters at
+     * all. From a PC on the same network the whole clip lands before the server
+     * debounces and one message carries everything, which is why the desktop
+     * client never had to handle it. From a phone over Tailscale the audio
+     * trickles, the server behaves like the live transcriber it is, and one
+     * sentence arrives a dozen times, growing. Keying on (start, end) turned
+     * that into a dozen copies of a growing sentence - what Naor saw on
+     * 2026-09-08.
+     *
+     * The tolerance on the start is needed because the same stretch is reported
+     * at 2.22 one moment and 2.24 the next.
+     *
+     * Segment texts carry their own leading space, so they are concatenated
+     * rather than joined with one.
+     */
     private suspend fun collect(events: Channel<Event>, uid: String): String {
-        val ordered = LinkedHashMap<String, String>()
-        val start = System.currentTimeMillis()
-        var lastSegment = start
+        val pieces = ArrayList<Piece>()
+        val started = System.currentTimeMillis()
+        var lastSegment = started
+        var sawAnything = false
+
         while (true) {
             val now = System.currentTimeMillis()
-            if (now - start > TOTAL_TIMEOUT_MS) break
-            if (ordered.isNotEmpty() && now - lastSegment > QUIET_TIMEOUT_MS) break
+            if (now - started > TOTAL_TIMEOUT_MS) break
+            if (sawAnything && now - lastSegment > QUIET_TIMEOUT_MS) break
             val event = withTimeoutOrNull(POLL_MS) { events.receive() } ?: continue
             when (event) {
                 is Event.Failed -> {
-                    if (ordered.isNotEmpty()) break
+                    if (sawAnything) break
                     throw unreachable(event)
                 }
                 is Event.Closed -> {
-                    if (event.code != 1000 && ordered.isEmpty()) {
+                    if (event.code != 1000 && !sawAnything) {
                         throw closeToException(event.code, event.reason)
                     }
                     break
@@ -223,31 +253,38 @@ class ServerBackend(
                 is Event.Text -> {
                     val obj = parse(event.payload) ?: continue
                     if (!matchesUid(obj, uid)) continue
-                    statusError(obj)?.let { if (ordered.isEmpty()) throw it else return join(ordered) }
+                    val error = statusError(obj)
+                    if (error != null) {
+                        if (!sawAnything) throw error else break
+                    }
                     if (obj["message"]?.jsonPrimitive?.contentOrNull == "DISCONNECT") break
                     val segments = runCatching { obj["segments"]?.jsonArray }.getOrNull() ?: continue
+
                     for (element in segments) {
                         val segment = runCatching { element.jsonObject }.getOrNull() ?: continue
                         val text = segment["text"]?.jsonPrimitive?.contentOrNull ?: continue
-                        val key = segmentKey(segment)
-                        ordered[key] = text
+                        val segStart = at(segment, "start")
+                        val segEnd = at(segment, "end", segStart)
+                        val existing = pieces.firstOrNull {
+                            abs(it.start - segStart) <= START_TOLERANCE_S
+                        }
+                        if (existing == null) {
+                            pieces.add(Piece(segStart, segEnd, text))
+                        } else if (segEnd >= existing.end) {
+                            existing.end = segEnd
+                            existing.text = text
+                        }
+                        sawAnything = true
                         lastSegment = System.currentTimeMillis()
                     }
                 }
             }
         }
-        return join(ordered)
+        return pieces.sortedBy { it.start }.joinToString("") { it.text }.trim()
     }
 
-    private fun join(ordered: Map<String, String>): String =
-        ordered.values.joinToString(" ") { it.trim() }.trim()
-
-    /** Segments repeat as the server re-transcribes; dedupe on rounded times. */
-    private fun segmentKey(segment: JsonObject): String {
-        fun at(name: String): Double =
-            segment[name]?.jsonPrimitive?.doubleOrNull ?: 0.0
-        return "${round(at("start") * 100) / 100}:${round(at("end") * 100) / 100}"
-    }
+    private fun at(segment: JsonObject, name: String, fallback: Double = 0.0): Double =
+        segment[name]?.jsonPrimitive?.doubleOrNull ?: fallback
 
     private fun matchesUid(obj: JsonObject, uid: String): Boolean {
         val theirs = obj["uid"]?.jsonPrimitive?.contentOrNull ?: return true
@@ -318,6 +355,9 @@ class ServerBackend(
         private const val QUIET_TIMEOUT_MS = 2_500L
         private const val TOTAL_TIMEOUT_MS = 15_000L
         private const val POLL_MS = 500L
+
+        /** The same stretch is reported at 2.22 one moment and 2.24 the next. */
+        private const val START_TOLERANCE_S = 0.25
 
         fun defaultClient(): OkHttpClient = OkHttpClient.Builder()
             .pingInterval(20, TimeUnit.SECONDS)

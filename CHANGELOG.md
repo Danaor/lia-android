@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.3.3 - 2026-09-08
+
+Fixed: one spoken sentence came back three times, each copy longer than the last.
+
+The home server re-transcribes its whole buffer as audio arrives and keeps
+re-sending the same stretch of speech with a later end time. Lia was treating
+each revision as a new segment, so every intermediate guess ended up in the
+transcript.
+
+It never showed on a PC: from the same network the whole clip lands before the
+server debounces, and one message carries the finished text. From a phone over
+Tailscale the audio trickles in, the server behaves like the live transcriber it
+is, and one sentence arrives a dozen times, growing.
+
+A segment is now identified by when it starts, the newest text for that start
+wins, and the transcript is those pieces in time order. Measured against the
+live server: with the audio fed slowly on purpose, the result is now the same
+clean text as a fast upload gives.
+
 ## 0.3.2 - 2026-09-08
 
 Two builds, so Play Protect stops being the obstacle.

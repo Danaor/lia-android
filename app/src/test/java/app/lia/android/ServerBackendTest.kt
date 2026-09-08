@@ -86,20 +86,41 @@ class ServerBackendTest {
         }
     }
 
+    /**
+     * The real server as it actually behaves on a longer clip: it re-transcribes
+     * its whole buffer, so one sentence arrives repeatedly with a later `end`,
+     * and the tail is a `completed:false` hypothesis that keeps being revised.
+     */
+    private class GrowingServer(private val frames: List<String>) : Polite() {
+        var uid: String? = null
+
+        override fun onMessage(webSocket: WebSocket, text: String) {
+            uid = Regex("\"uid\"\\s*:\\s*\"([^\"]+)\"").find(text)?.groupValues?.get(1)
+            webSocket.send("""{"uid":"$uid","message":"SERVER_READY","backend":"faster_whisper"}""")
+        }
+
+        override fun onMessage(webSocket: WebSocket, bytes: ByteString) {
+            if (bytes.utf8() != "END_OF_AUDIO") return
+            frames.forEach { webSocket.send(it.replace("UID", uid.orEmpty())) }
+            webSocket.send("""{"uid":"$uid","message":"DISCONNECT"}""")
+            webSocket.close(1000, null)
+        }
+    }
+
     @Test
     fun `a clip comes back as joined segment text`() = runBlocking {
         server.enqueue(
-            MockResponse().withWebSocketUpgrade(FakeServer(listOf(" שלום", "בדיקה.")))
+            MockResponse().withWebSocketUpgrade(FakeServer(listOf(" שלום", " בדיקה.")))
         )
         val text = backendFor(wsUrl()).transcribe(speech, Language.HEBREW, PromptHints.NONE)
         assertEquals("שלום בדיקה.", text)
     }
 
     @Test
-    fun `repeated segments are deduped on their rounded times`() = runBlocking {
+    fun `a segment the server re-sends is taken once`() = runBlocking {
         server.enqueue(
             MockResponse().withWebSocketUpgrade(
-                FakeServer(listOf("אחת", "שתיים"), duplicateSegments = true)
+                FakeServer(listOf(" אחת", " שתיים"), duplicateSegments = true)
             )
         )
         val text = backendFor(wsUrl()).transcribe(speech, Language.HEBREW, PromptHints.NONE)
@@ -178,6 +199,61 @@ class ServerBackendTest {
             backendFor(wsUrl(), "t").transcribe(speech, Language.HEBREW, PromptHints.NONE)
         }.exceptionOrNull() as BackendException
         assertEquals(BackendException.Kind.TIMEOUT, error.kind)
+    }
+
+    /**
+     * Naor's field report, 2026-09-08: one spoken sentence came back three
+     * times, each copy a little longer than the last. The server had
+     * re-transcribed its buffer and re-sent the same segment with a growing
+     * `end`, and keying on (start, end) made every revision look new.
+     */
+    @Test
+    fun `a sentence revised by the server is not repeated`() = runBlocking {
+        val frames = listOf(
+            """{"uid":"UID","segments":[{"start":0.0,"end":1.2,"text":" מעניין אותי אם זה","completed":false}]}""",
+            """{"uid":"UID","segments":[{"start":0.0,"end":2.6,"text":" מעניין אותי אם זה באמת יזהה","completed":false}]}""",
+            """{"uid":"UID","segments":[{"start":0.0,"end":4.4,"text":" מעניין אותי אם זה באמת יזהה את הדיבור שלי.","completed":true}]}""",
+        )
+        server.enqueue(MockResponse().withWebSocketUpgrade(GrowingServer(frames)))
+        val text = backendFor(wsUrl()).transcribe(speech, Language.HEBREW, PromptHints.NONE)
+        assertEquals("מעניין אותי אם זה באמת יזהה את הדיבור שלי.", text)
+    }
+
+    @Test
+    fun `a trailing hypothesis is kept once, after the committed text`() = runBlocking {
+        val frames = listOf(
+            """{"uid":"UID","segments":[{"start":0.0,"end":2.0,"text":" משפט ראשון.","completed":true}]}""",
+            """{"uid":"UID","segments":[{"start":0.0,"end":2.0,"text":" משפט ראשון.","completed":true},{"start":2.0,"end":3.0,"text":" ומשפט","completed":false}]}""",
+            """{"uid":"UID","segments":[{"start":0.0,"end":2.0,"text":" משפט ראשון.","completed":true},{"start":2.0,"end":3.9,"text":" ומשפט שני","completed":false}]}""",
+        )
+        server.enqueue(MockResponse().withWebSocketUpgrade(GrowingServer(frames)))
+        val text = backendFor(wsUrl()).transcribe(speech, Language.HEBREW, PromptHints.NONE)
+        assertEquals("משפט ראשון. ומשפט שני", text)
+    }
+
+    /** The same stretch is reported at 2.22 one moment and 2.24 the next. */
+    @Test
+    fun `a start that wobbles slightly is the same segment`() = runBlocking {
+        val frames = listOf(
+            """{"uid":"UID","segments":[{"start":2.24,"end":3.0,"text":" אני מדבר כמה","completed":true}]}""",
+            """{"uid":"UID","segments":[{"start":2.22,"end":3.5,"text":" אני מדבר כמה משפטים","completed":true}]}""",
+            """{"uid":"UID","segments":[{"start":2.24,"end":5.4,"text":" אני מדבר כמה משפטים ברצף.","completed":true}]}""",
+        )
+        server.enqueue(MockResponse().withWebSocketUpgrade(GrowingServer(frames)))
+        val text = backendFor(wsUrl()).transcribe(speech, Language.HEBREW, PromptHints.NONE)
+        assertEquals("אני מדבר כמה משפטים ברצף.", text)
+    }
+
+    /** Pieces come out in time order, whatever order they arrive in. */
+    @Test
+    fun `segments are ordered by time, not by arrival`() = runBlocking {
+        val frames = listOf(
+            """{"uid":"UID","segments":[{"start":5.0,"end":7.0,"text":" משפט שני.","completed":true}]}""",
+            """{"uid":"UID","segments":[{"start":0.0,"end":2.0,"text":" משפט ראשון.","completed":true}]}""",
+        )
+        server.enqueue(MockResponse().withWebSocketUpgrade(GrowingServer(frames)))
+        val text = backendFor(wsUrl()).transcribe(speech, Language.HEBREW, PromptHints.NONE)
+        assertEquals("משפט ראשון. משפט שני.", text)
     }
 
     @Test
