@@ -6,6 +6,8 @@ local.properties
 *.aab
 *.keystore
 *.jks
+lia-release.jks
+signing.properties
 captures/
 .externalNativeBuild/
 .cxx/

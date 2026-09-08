@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.1 - 2026-09-08
+
+A properly signed release build.
+
+Everything up to here was a **debug** APK: marked `application-debuggable` and
+signed with the public Android debug key that every development machine on
+earth shares. Combined with an accessibility service and a draw-over-other-apps
+permission, that is exactly the profile Play Protect blocks, and it did.
+
+This build is signed with the project's own key and is not debuggable. Nothing
+about the app changed.
+
+Because the signing key is different, uninstall any earlier Lia build before
+installing this one.
+
 ## 0.3.0 - 2026-09-07
 
 A Quick Settings tile: one more way to dictate, replacing nothing.

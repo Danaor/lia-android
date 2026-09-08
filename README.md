@@ -149,9 +149,23 @@ issue.
 Needs JDK 17 and the Android SDK (platform 35, build-tools 35).
 
 ```
-./gradlew test          # JVM unit tests, no emulator needed
-./gradlew assembleDebug # app/build/outputs/apk/debug/app-debug.apk
+./gradlew test            # JVM unit tests, no emulator needed
+./gradlew assembleDebug   # app/build/outputs/apk/debug/app-debug.apk
+./gradlew assembleRelease # app/build/outputs/apk/release/app-release.apk
 ```
+
+Release signing is optional and never lives in this repo. Point
+`~/.gradle/gradle.properties` at your own keystore:
+
+```
+LIA_KEYSTORE=/absolute/path/to/your.jks
+LIA_KEY_ALIAS=lia
+LIA_KEYSTORE_PASSWORD=...
+LIA_KEY_PASSWORD=...
+```
+
+Without those the release build is simply unsigned, so CI and a fresh clone
+still build.
 
 `tools/` holds the Python probes used to capture the golden fixtures in
 `fixtures/` from the real backends. They read credentials from a local Lia

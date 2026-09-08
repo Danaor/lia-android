@@ -13,15 +13,41 @@ android {
         applicationId = "app.lia.android"
         minSdk = 26
         targetSdk = 35
-        versionCode = 4
-        versionName = "0.3.0"
+        versionCode = 5
+        versionName = "0.3.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    /**
+     * Release signing. The keystore and its password live in
+     * ~/.gradle/gradle.properties, never in this repo. Without them the release
+     * build simply goes unsigned, so CI and anyone cloning this still builds.
+     */
+    val keystorePath = (project.findProperty("LIA_KEYSTORE") as String?)?.takeIf {
+        file(it).exists()
+    }
+
+    signingConfigs {
+        if (keystorePath != null) {
+            create("release") {
+                storeFile = file(keystorePath)
+                storePassword = project.findProperty("LIA_KEYSTORE_PASSWORD") as String?
+                keyAlias = project.findProperty("LIA_KEY_ALIAS") as String?
+                keyPassword = project.findProperty("LIA_KEY_PASSWORD") as String?
+                enableV1Signing = true
+                enableV2Signing = true
+                enableV3Signing = true
+            }
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            if (keystorePath != null) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
 
