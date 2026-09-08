@@ -295,6 +295,9 @@ private fun DictateAnywhereCard(viewModel: LiaViewModel) {
     var refresh by remember { mutableStateOf(0) }
     val canOverlay = remember(refresh) { BubbleService.canDrawOverlays(context) }
     val inserterOn = remember(refresh) { TextInserter.isEnabled(context) }
+    // The lite build ships without the accessibility service, so it must not
+    // offer a switch that can never do anything.
+    val hasInserter = remember { TextInserter.isDeclared(context) }
 
     SectionCard(
         title = "Dictate into other apps",
@@ -328,30 +331,38 @@ private fun DictateAnywhereCard(viewModel: LiaViewModel) {
             Hint("Android needs \"Display over other apps\" first. The switch opens that screen.")
         }
 
-        SwitchRow(
-            label = "Put the text straight into the field",
-            checked = settings.bubbleAutoInsert,
-            onChange = viewModel.settings::setBubbleAutoInsert,
-        )
-        Hint(
-            if (inserterOn) {
-                "On. Dictated text lands in the field you were typing in."
-            } else {
-                "Needs Lia switched on under Accessibility. Until then the text goes to " +
-                    "the clipboard and your keyboard offers a one-tap paste."
-            }
-        )
-        OutlinedButton(onClick = {
-            context.startActivity(
-                Intent(AndroidSettings.ACTION_ACCESSIBILITY_SETTINGS)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        if (hasInserter) {
+            SwitchRow(
+                label = "Put the text straight into the field",
+                checked = settings.bubbleAutoInsert,
+                onChange = viewModel.settings::setBubbleAutoInsert,
             )
-            refresh++
-        }) { Text(if (inserterOn) "Accessibility: on" else "Turn on in Accessibility") }
-        Hint(
-            "Lia reads the screen only in the instant it inserts your text, and never " +
-                "stores or sends anything it sees. Leave it off if you would rather paste."
-        )
+            Hint(
+                if (inserterOn) {
+                    "On. Dictated text lands in the field you were typing in."
+                } else {
+                    "Needs Lia switched on under Accessibility. Until then the text goes to " +
+                        "the clipboard and your keyboard offers a one-tap paste."
+                }
+            )
+            OutlinedButton(onClick = {
+                context.startActivity(
+                    Intent(AndroidSettings.ACTION_ACCESSIBILITY_SETTINGS)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                )
+                refresh++
+            }) { Text(if (inserterOn) "Accessibility: on" else "Turn on in Accessibility") }
+            Hint(
+                "Lia reads the screen only in the instant it inserts your text, and never " +
+                    "stores or sends anything it sees. Leave it off if you would rather paste."
+            )
+        } else {
+            Hint(
+                "This build has no accessibility service, so Play Protect does not object " +
+                    "to installing it. Dictated text goes to the clipboard and your " +
+                    "keyboard's paste chip puts it in, one extra tap."
+            )
+        }
 
         Text("Your existing keyboard's mic key", style = MaterialTheme.typography.labelLarge)
         Hint(

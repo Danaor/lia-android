@@ -20,6 +20,10 @@ along.
 ## Getting started
 
 1. Install the APK from [Releases](https://github.com/Danaor/lia-android/releases).
+   Two are offered. Take **lite** unless you know you want the other: it installs
+   without argument. **full** adds the accessibility service that puts dictated
+   text straight into the field, and because of that Play Protect blocks
+   sideloading it, so it needs `adb install` from a computer.
 2. Open **Settings**.
 3. Either:
    - **Home server** - install [Tailscale](https://tailscale.com) on the phone

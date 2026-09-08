@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The lite build ships without the accessibility service.
+
+  Play Protect hard-blocks the install of a sideloaded app that declares one
+  ("App blocked to protect your device", OK and nothing else), because an
+  accessibility service next to a draw-over-other-apps permission is the shape
+  of a banking trojan. Removing the declaration removes the trigger.
+
+  Everything else is identical. Dictated text goes to the clipboard instead of
+  straight into the field, and the keyboard's paste chip inserts it.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <application>
+        <service
+            android:name=".ime.TextInserter"
+            tools:node="remove" />
+    </application>
+</manifest>

@@ -102,6 +102,19 @@ class TextInserter : AccessibilityService() {
         val isConnected: Boolean get() = instance != null
 
         /**
+         * Whether this build ships the service at all. The lite build does not,
+         * so Play Protect has nothing to object to, and the UI should not offer
+         * a switch that can never do anything.
+         */
+        fun isDeclared(context: Context): Boolean = runCatching {
+            context.packageManager.getServiceInfo(
+                android.content.ComponentName(context, TextInserter::class.java),
+                0,
+            )
+            true
+        }.getOrDefault(false)
+
+        /**
          * Whether the user has switched Lia on in Accessibility settings.
          * Read from the system list rather than from [isConnected], so Settings
          * shows the right state even before Android has bound the service.

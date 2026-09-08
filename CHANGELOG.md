@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.3.2 - 2026-09-08
+
+Two builds, so Play Protect stops being the obstacle.
+
+The signed release of 0.3.1 was still blocked, and the dialog said why: "This
+app can request access to sensitive data... identity theft or financial fraud",
+with an OK button and no way past. That is Play Protect's block for a sideloaded
+app that declares an **accessibility service** - next to a draw-over-other-apps
+permission, that pair is the shape of a banking trojan. It was never about the
+signature.
+
+- **full** - what you have had until now. Dictated text lands straight in the
+  field you were typing in. Install it over `adb install` or from a source Play
+  Protect trusts.
+- **lite** - identical, minus the accessibility service. Nothing for Play
+  Protect to object to, so it installs normally. Dictation works everywhere; the
+  text goes to the clipboard and your keyboard's paste chip puts it in, one
+  extra tap. The Settings card says so instead of offering a switch that could
+  never do anything.
+
+Both are signed with the project key.
+
 ## 0.3.1 - 2026-09-08
 
 A properly signed release build.

@@ -13,8 +13,8 @@ android {
         applicationId = "app.lia.android"
         minSdk = 26
         targetSdk = 35
-        versionCode = 5
-        versionName = "0.3.1"
+        versionCode = 6
+        versionName = "0.3.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,6 +38,31 @@ android {
                 enableV2Signing = true
                 enableV3Signing = true
             }
+        }
+    }
+
+    /**
+     * Two builds of the same app.
+     *
+     * `full` declares the accessibility service, which is what lets dictated
+     * text land straight in the field you were typing in.
+     *
+     * `lite` does not declare it at all. Play Protect hard-blocks a sideloaded
+     * app that declares an accessibility service - "App blocked to protect your
+     * device", with only an OK button - because an accessibility service
+     * alongside a draw-over-other-apps permission is the shape of a banking
+     * trojan. Without that declaration there is nothing to block. Dictation
+     * still works everywhere; the text goes to the clipboard and the keyboard's
+     * paste chip puts it in, one extra tap.
+     */
+    flavorDimensions += "inserter"
+    productFlavors {
+        create("full") {
+            dimension = "inserter"
+        }
+        create("lite") {
+            dimension = "inserter"
+            versionNameSuffix = "-lite"
         }
     }
 
