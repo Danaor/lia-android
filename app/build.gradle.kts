@@ -13,8 +13,8 @@ android {
         applicationId = "app.lia.android"
         minSdk = 26
         targetSdk = 35
-        versionCode = 7
-        versionName = "0.3.3"
+        versionCode = 9
+        versionName = "0.3.5"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

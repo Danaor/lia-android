@@ -88,7 +88,7 @@ fun FileScreen(viewModel: LiaViewModel, modifier: Modifier = Modifier, sharedUri
 
         if (state.transcript.isNotBlank()) {
             SectionCard(title = "Transcript") {
-                Text(state.transcript, style = MaterialTheme.typography.bodyLarge)
+                TranscriptText(state.transcript)
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(onClick = { copyToClipboard(context, state.transcript) }) {
                         Text("Copy")

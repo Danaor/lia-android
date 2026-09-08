@@ -64,7 +64,10 @@ fun HistoryScreen(viewModel: LiaViewModel, modifier: Modifier = Modifier) {
             items(shown, key = { it.timestamp }) { entry ->
                 Card(modifier = Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(12.dp)) {
-                        Text(entry.text, style = MaterialTheme.typography.bodyMedium)
+                        TranscriptText(
+                            entry.text,
+                            style = MaterialTheme.typography.bodyMedium,
+                        )
                         Hint(
                             listOfNotNull(
                                 stamp(entry.timestamp),

@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.3.5 - 2026-09-08
+
+Fixed: dictating into an empty chat inserted the word "Message" first.
+
+An empty text field reports its own placeholder as its contents, so Lia, which
+reads what is already there in order to add to it, treated "Message" as text
+you had typed and appended the dictation to it.
+
+Lia now recognises a field that is only showing its placeholder and treats it as
+empty. Dictating into an empty WhatsApp chat inserts exactly what you said.
+
+## 0.3.4 - 2026-09-08
+
+Hebrew transcripts hang off the right edge, where they belong.
+
+Compose takes a paragraph's alignment from the layout direction, and the app's
+chrome is English, so Hebrew was being left-aligned: the last short line sat on
+the wrong side with its full stop stranded there. The direction now comes from
+the text itself, by the Unicode rule that the first strong character decides. A
+Hebrew sentence carrying English terms is still a Hebrew paragraph, which is how
+most dictation here actually looks.
+
+Applied to the Record, File and History screens.
+
 ## 0.3.3 - 2026-09-08
 
 Fixed: one spoken sentence came back three times, each copy longer than the last.

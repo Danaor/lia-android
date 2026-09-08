@@ -14,7 +14,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.LayoutDirection
+import app.lia.android.text.Bidi
 import androidx.compose.ui.unit.dp
 
 /** Shared bits of chrome so the four screens look like one app. */
@@ -78,6 +83,32 @@ fun LabelRow(label: String, value: String) {
             value,
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+    }
+}
+
+/**
+ * A transcript, aligned by what it says rather than by the app's chrome.
+ *
+ * Compose takes a paragraph's alignment from the LAYOUT direction, which here is
+ * the English UI, so Hebrew was hanging off the left edge. [Bidi] resolves the
+ * direction from the first strong character instead, the way Unicode says to.
+ */
+@Composable
+fun TranscriptText(
+    text: String,
+    modifier: Modifier = Modifier,
+    style: androidx.compose.ui.text.TextStyle = MaterialTheme.typography.bodyLarge,
+) {
+    val rtl = remember(text) { Bidi.isRtl(text) }
+    CompositionLocalProvider(
+        LocalLayoutDirection provides if (rtl) LayoutDirection.Rtl else LayoutDirection.Ltr
+    ) {
+        Text(
+            text,
+            modifier = modifier.fillMaxWidth(),
+            style = style,
+            textAlign = TextAlign.Start,
         )
     }
 }
